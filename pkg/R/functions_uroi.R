@@ -417,9 +417,12 @@ compute_greenness_time_series  <- function(color="green",
 		ylim <- NULL
 		ylab <- paste0(color," relative")
 
-		pdf(paste0(path_base,name_of_analysis,"/mask_timeseries/",mask_name,"_",color,
-					  ".pdf"), #_mean_doy
-			 width=12, height=8)
+		jpeg(paste0(path_base,name_of_analysis,"/mask_timeseries/",mask_name,"_",color,
+		           ".jpg"), #_mean_doy
+		    width=12, height=8, units="in", res=100)
+# 		pdf(paste0(path_base,name_of_analysis,"/mask_timeseries/",mask_name,"_",color,
+# 					  ".pdf"), #_mean_doy
+# 			 width=12, height=8)
 		par(mfrow=c(1,1))
 		plot(unique(doy[which_images]), mean_doy, type="l",
 			  main=main_plot,

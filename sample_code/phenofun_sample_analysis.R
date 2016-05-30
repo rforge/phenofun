@@ -3,7 +3,7 @@
 # sample code for uroi analysis
 # part 2: uroi analysis 
 #
-# Date: 03.03.16
+# Date: 30.05.16
 # Author: Ludwig Bothmann
 ##############################################
 
@@ -13,19 +13,25 @@
 
 rm(list=ls())
 
-setwd("/home/bothmannlu/Dokumente/Phenology")
+# Set working directory regarding to your folder structure
+setwd("/home/bothmannlu/Dokumente/rforge/phenofun")
 
+# Load package "phenofun"
 library(devtools)
-load_all("rcode/phenofun")
+load_all("pkg")
 
-# setwd("/home/bothmannlu/Dokumente/Phenology/rcode")
-# install.packages("rcode/phenofun_0.0.4.tar.gz", repos=NULL, type="source")
+# # Alternatively load package from R-Forge
+# install.packages("phenofun",
+#                  repos="http://R-Forge.R-project.org")
+# 
+# # ... or from tar.gz
+# install.packages("phenofun_0.0.4.tar.gz", repos=NULL, type="source")
 # library(phenofun)
-# setwd("/home/bothmannlu/Dokumente/Phenology")
+
 
 
 # source file with parameters
-filename_parameters <- "rcode/phenofun_sample_parameters.R"
+filename_parameters <- "sample_code/phenofun_sample_parameters.R"
 
 source(filename_parameters)
 
@@ -46,7 +52,8 @@ clusters_out <- find_clusters(folder=folder,
 										name_of_analysis=name_of_analysis,
 										save_results=TRUE
 										# ,colormode="Grayscale"
-										,x=x,y=y
+										,x=x,y=y,
+										nstart=nstart
 										)
 
 #################################################################
@@ -67,7 +74,7 @@ ref_image <- readImage(paste0(folder,lists_files[1]))
 ref_image <- ref_image[x,y,]
 # Compute overlay
 overlay <- overlay_masks_onref(masks_list, ref_image, alpha=.3)
-display(overlay)
+# display(overlay)
 
 # and save overlay
 writeImage(overlay,files=paste0(path_base,name_of_analysis,"/masks/overlay.jpg"))
@@ -78,15 +85,17 @@ writeImage(overlay,files=paste0(path_base,name_of_analysis,"/masks/overlay.jpg")
 
 if(do_mean_greenness){
 	
-	mean_greenness <- compute_greenness_time_series(color="green",
-																	which_images=which_images,
-																	doy=doy,
-																	path_base=path_base,
-																	name_of_analysis=name_of_analysis,
-																	main_plot=main_plot,
-																	settings_mat=clusters_out$settings_mat,
-																	load_masks=FALSE,
-																	masks_list=masks_list)
+  mean_greenness <- compute_greenness_time_series(color="green",
+                                                  folder=folder,
+                                                  lists_files=lists_files,
+                                                  which_images=which_images,
+                                                  doy=doy,
+                                                  path_base=path_base,
+                                                  name_of_analysis=name_of_analysis,
+                                                  main_plot=main_plot,
+                                                  settings_mat=clusters_out$settings_mat,
+                                                  load_masks=FALSE,
+                                                  masks_list=masks_list)
 }
 
 #################################################################
