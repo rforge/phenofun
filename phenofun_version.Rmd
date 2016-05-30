@@ -1,0 +1,108 @@
+---
+title: "Package phenofun -- Changes in new Versions"
+author: 'Autor: Ludwig Bothmann'
+date: 'Start date: 01.02.2016'
+output:
+  html_document:
+    number_sections: no
+    theme: united
+    toc: yes
+  pdf_document:
+    toc: yes
+  word_document: default
+---
+
+This document documents the changes in new versions of the package phenofun
+
+## 0.0.2
+
+- In function irlba now irlba(..., work=n_pc+5, verbose=TRUE), otherwise only 2 principal components were possible with the new version of package irlba (supposedly 2.0.0).
+
+## 0.0.3
+
+- In function irlba now (irlba..., verbose=FALSE)
+
+### structural change functions:
+
+- vector of doys can be specified, before that, a vector 1:length(doy) was specified, which is not the same and can be very wrong for sparse data.
+- the index of the best setting is returned in order to assess it for example via settings_mat[ftests$wm1,]
+
+### create_dirs_uroi
+
+- name_of_analysis instead of date_analysis.
+- prior: error if path_base does not exist and does not create new directory for new date_analysis if "masks" or "mask_timeseries" already exists
+- uroi subdirectory removed
+- changed hierarchy, now: path_base/name_of_analysis and there directories masks and mask_timeseries.
+
+### find_clusters
+
+- if x and y are not specified, dimensions are now read from the first specified image. If only x or y is specified, the other dimension is read from the image.
+- nstart defaults to 2
+- 2 shallow copies of images removed to save memory
+- saving of results now optional with default to no.
+- optional usage of grayscale images with option colormode="Grayscale".
+
+### generate_masks
+
+- returns optionally all masks in a list
+- if x and y are not specified, dimensions are now read from the first specified image. If only x or y is specified, the other dimension is read from the image.
+
+### compute_greenness_time_series
+
+- if x and y are not specified, dimensions are now read from the first specified image. If only x or y is specified, the other dimension is read from the image.
+- instead of loading RData files, direct output from prior functions can be used. Optional, see arguments load_masks and masks_list.
+
+##  Comments to Michael's comments
+
+### find_clusters
+
+- is it needed to save cluster results as rda? if you return it anyway? => It takes some time, so if you want to start after the cluster analysis with further analyses, you can skip this step to save time. But no, it is not necessary, now optional with default to no.
+- works only for RGB images. With minor changes got it to work for grayscale too (replace read_images and ncol argument after svd). I was just wondering about the clustering results for IR channel only to compute NDVI later on, don't know if it's even needed. Result: did not work properly. Thus not relevant. => Should work with options colormode="Grayscale", col_in=1, col_out=1 in read_images(). Can now be done in find_clusters with additional parameter colormode="Grayscale"  - could you test it with the ir images?
+
+
+##  ToDo
+
+### compute_greenness_time_series
+
+- could not use it, as I run clustering on subset of images, but want greenness for all images (not enought RAM to load all images at once)
+- besides gcc, maybe ExG too as option? ExG = 2*green - (red + blue) => sure, I could implement it, if necessary
+
+
+## 0.0.4
+
+### create_dirs_uroi
+- path_base defaults to NULL, i.e., the current working directory
+
+### find_clusters
+- grayscale: läuft nicht, gibt mir folgenden Fehler:
+
+  %%%
+  Error in slot(readImage(paste0(folder, file_names[which_images[i]])),  : 
+  incorrect number of dimensions
+  %%%
+  
+  => Hab den Bug (oder zumindest einen) gefunden, bei mir geht es jetzt
+  
+### generate_masks
+- Die Argumente folder und lists_file brauchts ja eigentlich nur um die Dimensionen x und y zu erkennen, oder? Das würde aber auch aus der cluster_list gehen, da ist ja auch das als matrix drin mit den richtigen Dimensionen. Macht für mich von der Funktion her wenig Sinn für diese Argumente.
+
+=> Ja, da hast Du recht, habe es entsprechend angepasst und hoffe, dass es noch funktioniert
+
+=> Bei compute_greenness_time_series analog
+
+- ich fände es einfacher, wenn nur ein save_masks argument wäre und dann beides jpg und rdata gespeichert würden. außerdem müssten dann name_of_analysis und path_base nur dann angegeben werden, wenn save_masks TRUE wäre. 
+
+=> Done
+
+- in dem fall, dass die masken eh nur binary sind, dürfte jpg kein problem sein, aber png oder tif wäre sicherer, da lossless.
+
+=> Mit type=".tiff", type=".png" etc. kann jetzt das Wunschformat übergeben werden.
+
+### compute_greenness_time_series
+- Argumente n_pc_vec und k_vec werden nicht gebraucht
+
+=> Stimmt, hab ich gelöscht
+
+- which_images default zu seq_len(length(lists_files))
+
+=> Done
