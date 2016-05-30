@@ -10,22 +10,43 @@
 do_mean_greenness <- TRUE
 do_strucchange <- TRUE
 
+# Testmode: Only 10 images and few settings
+testmode <- FALSE
 
 # Name of analysis (perhaps with year of used data)
 # => Only for file names of saved objects, can be anything
 name_of_analysis <- "160530_marquartstein"
 
-# Which images shall be analysed
-complete_year <- TRUE
-year_analysis <- 2013 # only relevant if complete_year=TRUE
-n_images_try <- 10 # 834 # only relevant if complete_year=FALSE
+if(testmode){
+  
+  # Which images shall be analysed
+  complete_year <- FALSE
+  year_analysis <- 2013 # only relevant if complete_year=TRUE
+  n_images_try <- 10 # 834 # only relevant if complete_year=FALSE
+  
+  # Parameters for the clusteranalysis
+  n_pc_vec <- 2
+  k_vec <- 2:3
+  
+  # Iterations of kmeans
+  nstart <- 1
+  
+}else{
+  
+  # Which images shall be analysed
+  complete_year <- TRUE
+  year_analysis <- 2013 # only relevant if complete_year=TRUE
+  n_images_try <- 10 # 834 # only relevant if complete_year=FALSE
+  
+  # Parameters for the clusteranalysis
+  n_pc_vec <- c(12,24)# c(4,8,12,16,20) #8 #c(12,24)#2 # c(12,36) # NULL
+  k_vec <- 4:10#2:3##4:15#4:6
+  
+  # Iterations of kmeans
+  nstart <- 2#1
+  
+}
 
-# Parameters for the clusteranalysis
-n_pc_vec <- c(12,24)# c(4,8,12,16,20) #8 #c(12,24)#2 # c(12,36) # NULL
-k_vec <- 4:10#2:3##4:15#4:6
-
-# Iterations of kmeans
-nstart <- 2#1
 set.seed(1112)
 
 # Base directory for the results (has to exist)
