@@ -166,7 +166,7 @@ dummy_time <- function(x,a,b, doy=NULL){
 #' @param mean_doy_norm matrix with \%greenness time series in rows
 #' @param a_vec Vector of possible spring doys
 #' @param b_vec Vector of possible autumn doys (backwards from 31.12.)
-#' @param doy Optionaly vector of DOYs
+#' @param doy Optional vector of DOYs
 #' @return max_corr Maximal correlations
 #' @export
 struc_dummy <- function(mean_doy_norm,

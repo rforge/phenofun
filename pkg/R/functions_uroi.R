@@ -15,6 +15,10 @@ create_dirs_uroi <- function(path_base=NULL,
 									  name_of_analysis)
 {
 
+  if(!dir.exists(path_base)){
+    dir.create(path_base, recursive=TRUE)
+  }
+  
 	if(!dir.exists(paste0(path_base,name_of_analysis))){
 		dir.create(paste0(path_base,name_of_analysis))
 	}
