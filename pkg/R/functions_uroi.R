@@ -126,7 +126,7 @@ find_clusters <- function(x=NULL,
 	# 	images_flat_centered <- images_flat - images_flat_mean
 	images <- images - rowMeans(images)
 
-	cat(as.character(Sys.time()),"Start svd and cluster analysis \n")
+	cat(as.character(Sys.time()),": start svd and cluster analysis \n")
 
 	cluster_list <- vector("list", length=length(n_pc_vec)*length(k_vec))
 
@@ -138,7 +138,7 @@ find_clusters <- function(x=NULL,
 		#	left singular vector are the eigenimages
 		svd_images <- irlba(images, nu=n_pc, nv=0, work=n_pc+5, verbose=FALSE)
 
-		cat(as.character(Sys.time()), "svd fuer n_pc =", n_pc,"fertig \n")
+		cat(as.character(Sys.time()), ": svd for n_pc =", n_pc,"done \n")
 
 		if(colormode=="Grayscale"){
 			u <- svd_images$u
@@ -154,7 +154,7 @@ find_clusters <- function(x=NULL,
 
 			cluster_list[[i]] <- matrix(km$cluster, nrow=dim_images[1])
 
-			cat(as.character(Sys.time()),"k =",k, ", n_pc =",n_pc,"fertig \n")
+			cat(as.character(Sys.time()),": k =",k, ", n_pc =",n_pc,"done \n")
 		}
 	}
 
@@ -315,7 +315,7 @@ compute_greenness_time_series  <- function(color="green",
 
 	if(!load_masks & is.null(masks_list)) stop("Either set load_masks=TRUE or specify masks_list.")
 
-	cat(as.character(Sys.time()),": Start color =", color, "\n")
+	cat(as.character(Sys.time()),": start masking\n")
 
 	if(color=="green"){
 		col_in <- 2
@@ -385,7 +385,7 @@ compute_greenness_time_series  <- function(color="green",
 		n_pc <- settings_mat[i,3]
 		K <- settings_mat[i,1]
 		k <- settings_mat[i,2]
-		cat(as.character(Sys.time()),": Start npc =", n_pc, ", K =", K,", k =", k, "\n")
+		# cat(as.character(Sys.time()),": Start npc =", n_pc, ", K =", K,", k =", k, "\n")
 
 		mask_name <- paste0("npc",n_pc,"_K",K,"_",k)
 
@@ -401,7 +401,7 @@ compute_greenness_time_series  <- function(color="green",
 
 		images_masked <- mask_img(images,mask=mask)
 
-		cat(as.character(Sys.time()),": images masked \n")
+		# cat(as.character(Sys.time()),": images masked \n")
 
 		# Compute mean cluster time series ...
 		timeseries_mean <- apply(X = images_masked[,,,],MARGIN = 3,mean, na.rm=TRUE)
@@ -450,15 +450,15 @@ compute_greenness_time_series  <- function(color="green",
 		gc()
 
 		cat(as.character(Sys.time()),": npc =", n_pc, ", K =", K, ", k =", k, "done \n")
-		cat("============================================ \n \n")
+		# cat("============================================ \n \n")
 
 	}
 
 	save(mean_doy_norm, settings_mat,
 		  file=paste0(path_base,name_of_analysis,"/mask_timeseries/mean_doys_uROI_",color,".RData"))
 
-	cat(as.character(Sys.time()),": color =", color, "done \n")
-	cat("============================================ \n \n")
+	cat(as.character(Sys.time()),": masking done \n")
+	# cat("============================================ \n \n")
 
 	output <- list(mean_doy_norm=mean_doy_norm,
 						settings_mat=settings_mat)

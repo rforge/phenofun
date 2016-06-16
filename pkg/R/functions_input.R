@@ -106,7 +106,7 @@ read_images <- function(colormode="Color",
 		for(i in seq_along(which_images)){
 			
 			if(i %% 50 == 1){ 
-				cat("Index ",i,": Bild ", which_images[i], " - ", 
+				cat("Index ",i,": Image ", which_images[i], " - ", 
 					 file_names[which_images[i]], "\n")
 			}
 			images[,,,i] <- imageData(readImage(
@@ -186,7 +186,7 @@ read_images <- function(colormode="Color",
 			for(i in seq_along(which_images)){
 				
 				if(i %% 50 == 1){ 
-					cat("Index ",i,": Bild ", which_images[i], " - ", 
+					cat("Index ",i,": Image ", which_images[i], " - ", 
 						 file_names[which_images[i]], "\n")}
 				# 				images[,,,i] <- imageData(channel(readImage(
 				# 					paste0(folder,file_names[which_images[i]]))[x,y,col_in],
@@ -206,7 +206,7 @@ read_images <- function(colormode="Color",
 			for(i in seq_along(which_images)){
 				
 				if(i %% 50 == 1){ 
-					cat("Index ",i,": Bild ", which_images[i], " - ", 
+					cat("Index ",i,": Image ", which_images[i], " - ", 
 						 file_names[which_images[i]], "\n")}
 				
 				# Read all colour channels
@@ -260,7 +260,7 @@ read_images_ndvi <- function(folder,
 	for(i in seq_along(which_images)){
 		
 		if(i %% 50 == 1){ 
-			cat("Index ",i,": Bild ", which_images[i], " - ", 
+			cat("Index ",i,": Image ", which_images[i], " - ", 
 				 file_names[which_images[i]], "\n")
 		}
 		
@@ -314,7 +314,7 @@ read_images_pseudo_ndvi <- function(folder,
 	for(i in seq_along(which_images)){
 		
 		if(i %% 50 == 1){ 
-			cat("Index ",i,": Bild ", which_images[i], " - ", 
+			cat("Index ",i,": Image ", which_images[i], " - ", 
 				 file_names[which_images[i]], "\n")
 		}
 		
