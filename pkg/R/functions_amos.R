@@ -329,6 +329,9 @@ amos_uroi_wrap <- function(camera,
       which_images <- which_images[seq_len(n_images_try)]
     }
     
+    # Read dimension
+    dim_images <- dim(readImage(paste0(folder,lists_files[which_images][round(length(which_images)/2)])))
+    
     # Save parameter list for further reference
     parameters_list <- list(camera=camera,
                             year_analysis=year_analysis,
@@ -340,7 +343,9 @@ amos_uroi_wrap <- function(camera,
                             k_vec=k_vec,
                             nstart=nstart,
                             testmode=testmode,
-                            n_img=length(which_images))
+                            n_img=length(which_images),
+    								dim_images=dim_images)
+    
     # lists_files=lists_files
     
     print(parameters_list)
