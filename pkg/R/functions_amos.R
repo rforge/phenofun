@@ -242,8 +242,8 @@ amos_uroi_wrap <- function(camera,
                            save_results=TRUE,
                            save_masks=TRUE,
                            masks_type=".jpg",
-                           a_vec = seq(90,150,by=1),
-                           b_vec = seq(30,100,by=1),
+                           a_vec = seq(1,150,by=1),
+                           b_vec = seq(1,100,by=1),
                            ...){
   
   set.seed(1112)
