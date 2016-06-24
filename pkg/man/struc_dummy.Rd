@@ -13,7 +13,7 @@ struc_dummy(mean_doy_norm, a_vec, b_vec, doy = NULL)
 
 \item{b_vec}{Vector of possible autumn doys (backwards from 31.12.)}
 
-\item{doy}{Optionaly vector of DOYs}
+\item{doy}{Optional vector of DOYs}
 }
 \value{
 max_corr Maximal correlations
