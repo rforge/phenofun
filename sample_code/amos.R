@@ -14,8 +14,11 @@ rm(list=ls())
 setwd("/home/bothmannlu/Desktop/amos_test")
 
 # Load package "phenofun"
-library(devtools)
-load_all("/home/bothmannlu/Dokumente/rforge/phenofun/pkg")
+# library(devtools)
+# load_all("/home/bothmannlu/Dokumente/rforge/phenofun/pkg")
+install.packages("phenofun", repos="http://R-Forge.R-project.org")
+library(phenofun)
+help(package="phenofun")
 
 # Print sessionInfo and time of start
 sessionInfo()
