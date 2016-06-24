@@ -1,6 +1,6 @@
 Package: phenofun
 Title: Automated Processing of Webcam Images for Phenological Classification
-Version: 0.0.4
+Version: 0.0.5
 Authors@R: "Ludwig Bothmann <ludwig.bothmann@stat.uni-muenchen.de> [aut, cre]"
 Author: Ludwig Bothmann [aut, cre], Michael Matiu [ctb]
 Maintainer: Ludwig Bothmann <ludwig.bothmann@stat.uni-muenchen.de>

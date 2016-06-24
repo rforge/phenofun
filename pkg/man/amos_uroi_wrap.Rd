@@ -10,7 +10,8 @@ amos_uroi_wrap(camera, year_analysis, months_analysis, hour_analysis,
   name_of_analysis = substr(as.character(Sys.time()), 1, 10),
   folder_data = getwd(), n_pc_vec = 12, k_vec = 4:10, nstart = 2,
   save_results = TRUE, save_masks = TRUE, masks_type = ".jpg",
-  a_vec = seq(1, 150, by = 1), b_vec = seq(1, 100, by = 1), ...)
+  a_vec = seq(1, 150, by = 1), b_vec = seq(1, 100, by = 1), mask = NULL,
+  ...)
 }
 \arguments{
 \item{camera}{Name of the camera (is a number, see URL)}
@@ -44,6 +45,8 @@ default is the date as \code{yyyy-mm-dd}}
 
 \item{k_vec}{Vector of numbers of clusters for k-means}
 
+\item{nstart}{Number of iterations k-means}
+
 \item{save_results}{\code{TRUE} if results of clustering shall be saved}
 
 \item{save_masks}{\code{TRUE} if masks shall be saved}
@@ -54,7 +57,9 @@ default is the date as \code{yyyy-mm-dd}}
 
 \item{b_vec}{Possible autumn doys (counted backwards from 31.12.)}
 
-\item{n_start}{Number of iterations k-means}
+\item{mask}{Will be loaded}
+
+\item{...}{Further arguments}
 }
 \description{
 Wrapper function for analyzing data from AMOS (http://amos.cse.wustl.edu/)

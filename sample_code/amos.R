@@ -9,16 +9,18 @@
 rm(list=ls())
 
 # Set working directory regarding to your folder structure
-# setwd("/home/bothmannlu/Dokumente/Phenology")
-
 setwd("/home/bothmannlu/Desktop/amos_test")
 
+# # Install package phenofun from R-Forge
+# install.packages("phenofun", repos="http://R-Forge.R-project.org")
+# 
+# # Load package "phenofun"
+# library(phenofun)
+# # help(package="phenofun")
+
 # Load package "phenofun"
-# library(devtools)
-# load_all("/home/bothmannlu/Dokumente/rforge/phenofun/pkg")
-install.packages("phenofun", repos="http://R-Forge.R-project.org")
-library(phenofun)
-help(package="phenofun")
+library(devtools)
+load_all("/home/bothmannlu/Dokumente/rforge/phenofun/pkg")
 
 # Print sessionInfo and time of start
 sessionInfo()

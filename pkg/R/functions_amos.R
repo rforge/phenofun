@@ -218,12 +218,14 @@ if __name__ == '__main__':
 #' @param folder_data Folder where the data will be saved, default is wd
 #' @param n_pc_vec Vector of numbers of eigenimages
 #' @param k_vec Vector of numbers of clusters for k-means
-#' @param n_start Number of iterations k-means
+#' @param nstart Number of iterations k-means
 #' @param save_results \code{TRUE} if results of clustering shall be saved
 #' @param save_masks \code{TRUE} if masks shall be saved
 #' @param masks_type File name extension of masks, default is \code{.jpg}
 #' @param a_vec Possible spring doys
 #' @param b_vec Possible autumn doys (counted backwards from 31.12.)
+#' @param mask Will be loaded
+#' @param ... Further arguments
 #' @export
 amos_uroi_wrap <- function(camera,
                            year_analysis,
@@ -244,6 +246,7 @@ amos_uroi_wrap <- function(camera,
                            masks_type=".jpg",
                            a_vec = seq(1,150,by=1),
                            b_vec = seq(1,100,by=1),
+                           mask=NULL,
                            ...){
   
   set.seed(1112)
