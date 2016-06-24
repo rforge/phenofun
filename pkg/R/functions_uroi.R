@@ -446,6 +446,7 @@ compute_greenness_time_series  <- function(color="green",
 		# Norm values to (0,1) and average per DOY
 		time_norm <- timeseries_mean/mean(mask)
 		mean_doy_norm[i,] <- tapply(time_norm, doy[which_images], mean)
+		colnames(mean_doy_norm) <- unique(doy[which_images])
 
 		gc()
 
