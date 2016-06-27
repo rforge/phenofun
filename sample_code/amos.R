@@ -33,7 +33,7 @@ year_analysis_vec <- rep(2015,length(camera_vec))
 # ... the respective months ...
 months_analysis_list <- vector("list",length(camera_vec))
 for(i in 1:length(camera_vec)){
-  months_analysis_list[[i]] <- 1:12
+  months_analysis_list[[i]] <- 7#1:12
 }
 # ... and the hour to start
 hour_analysis_vec <- rep(17, length(camera_vec))
@@ -45,7 +45,7 @@ folder_results <- "results/amos"
 folder_data <- "data/amos"
 
 # If TRUE, only 10 images are analyzed
-testmode <- TRUE
+testmode <- FALSE
 
 # This vector is TRUE for cameras where no error occurred
 no_error <- rep(NA,length(camera_vec))
@@ -118,6 +118,8 @@ for(i in 1:length(camera_vec)){
   
   write.csv(success, file=paste0("results/amos/success_",camera_vec[1],
                                  "_to_",camera_vec[length(camera_vec)],".csv"))
+  
+  gc()
 }
 
 (time_end <- Sys.time())
