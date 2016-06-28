@@ -198,34 +198,47 @@ if __name__ == '__main__':
 # amos_uroi_wrap()
 ###################################
 
-#' Wrapper function for analyzing data from AMOS (http://amos.cse.wustl.edu/)
+#' Wrapper function for analyzing data from AMOS
 #' 
-#' @param camera Name of the camera (is a number, see URL)
+#' This function allows to analyze webcam data from AMOS 
+#' (\url{http://amos.cse.wustl.edu/}) with the uROI method in a fully 
+#' automated way. Only the parameters of camera, year, month and hour of images to be
+#' analyzed have to be specified. Example code can be downloaded at 
+#' \url{http://bothmann.userweb.mwn.de/dissertation.html}.
+#' 
+#' @param camera Name of the camera (five-digit number, see \url{http://amos.cse.wustl.edu/})
 #' @param year_analysis Year(s) to be analyzed as vector
 #' @param months_analysis Month(s) to be analyzed as vector
 #' @param hour_analysis Hour(s) to be analyzed as vector
 #' @param do_mean_greenness If \code{TRUE} (default), time series of percentage 
 #'  greenness inside the ROIs are computed
-#' @param do_strucchange If \code{TRUE} (default), points of structural change 
-#'  are searched for and OC values computed
+#' @param do_strucchange If \code{TRUE} (default), points of structural changes 
+#'  are searched for and OC values are computed
 #' @param testmode If \code{TRUE}, only 10 images for testing are analyzed, 
 #'  default is \code{FALSE}
 #' @param only_download If \code{TRUE}, images are downloaded but not analyzed,
 #'  default is \code{FALSE}
-#' @param folder_results Base folder where the results will be saved, default is wd
-#' @param name_of_analysis Name of subfolder for the results of this run,
+#' @param folder_results Folder where the results will be saved, default is
+#'  the current working directory
+#' @param name_of_analysis Name of subfolder for the results of the analysis,
 #'  default is the date as \code{yyyy-mm-dd}
-#' @param folder_data Folder where the data will be saved, default is wd
+#' @param folder_data Folder where the data will be saved, default is 
+#'  the current working directory
 #' @param n_pc_vec Vector of numbers of eigenimages
 #' @param k_vec Vector of numbers of clusters for k-means
 #' @param nstart Number of iterations k-means
-#' @param save_results \code{TRUE} if results of clustering shall be saved
-#' @param save_masks \code{TRUE} if masks shall be saved
+#' @param save_results If \code{TRUE} (default), results of clustering are saved
+#' @param save_masks If \code{TRUE} (default), masks are saved
 #' @param masks_type File name extension of masks, default is \code{.jpg}
 #' @param a_vec Possible spring doys
 #' @param b_vec Possible autumn doys (counted backwards from 31.12.)
-#' @param mask Will be loaded
+#' @param mask Do not edit, masks will be loaded automatically
 #' @param ... Further arguments
+#' @return As output, all resulting masks and percentage greenness time series 
+#'  inside the masks are saved in subfolders of \code{folder_results}. 
+#'  Additionally, overlays of all masks of the best setting with a background 
+#'  image and the background image itself are saved in \code{folder_results}, 
+#'  ordered with respect to optimality criterion OC2.
 #' @export
 amos_uroi_wrap <- function(camera,
                            year_analysis,

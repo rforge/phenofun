@@ -1,0 +1,12 @@
+bibentry(bibtype = "article",
+         title = "Automated processing of webcam images for phenological classification",
+         author = c(person("Ludwig", "Bothmann"),
+                    person("Annette", "Menzel"),
+                    person("Bjoern", "Menze"),
+                    person("Christian", "Schunk"),
+                    person("Goeran", "Kauermann")),
+         year = 2016,
+	journal = "PLOS ONE",
+note="under review",)
+
+
