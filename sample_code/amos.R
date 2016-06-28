@@ -2,50 +2,48 @@
 # Package phenofun
 # sample code for uroi analysis for data from amos (http://amos.cse.wustl.edu/)
 #
-# Date: 24.06.16
+# Date: 28.06.16
 # Author: Ludwig Bothmann
 ##############################################
 
 rm(list=ls())
 
-# Set working directory regarding to your folder structure
-setwd("/home/bothmannlu/Desktop/amos_test")
+# Set working directory according to your folder structure
+setwd("../../../Desktop/amos_test")
 
-# # Install package phenofun from R-Forge
-# install.packages("phenofun", repos="http://R-Forge.R-project.org")
-# 
-# # Load package "phenofun"
-# library(phenofun)
-# # help(package="phenofun")
+# Install package phenofun from R-Forge
+install.packages("phenofun", repos="http://R-Forge.R-project.org")
 
 # Load package "phenofun"
-library(devtools)
-load_all("/home/bothmannlu/Dokumente/rforge/phenofun/pkg")
+library(phenofun)
+# help(package="phenofun")
 
-# Print sessionInfo and time of start
+# Print sessionInfo and save time of start
 sessionInfo()
-(time_start <- Sys.time())
+time_start <- Sys.time()
 
 # Specify here the IDs of the cameras to be analyzed...
-camera_vec <- 1:10
+camera_vec <- 1#1:10
 # ... the respective year...
 year_analysis_vec <- rep(2015,length(camera_vec))
 # ... the respective months ...
 months_analysis_list <- vector("list",length(camera_vec))
 for(i in 1:length(camera_vec)){
   months_analysis_list[[i]] <- 7#1:12
+  # Note: If only one month is analyzed, meaningful values of OC1 and OC2 cannot
+  # be derived
 }
-# ... and the hour to start
+# ... and the hour to start (time stamps are in GMT)
 hour_analysis_vec <- rep(17, length(camera_vec))
 
-# Base directory for the results
+# Directory for the results
 folder_results <- "results/amos"
 
-# Directory of images
+# Directory for the images
 folder_data <- "data/amos"
 
 # If TRUE, only 10 images are analyzed
-testmode <- FALSE
+testmode <- FALSE#TRUE
 
 # This vector is TRUE for cameras where no error occurred
 no_error <- rep(NA,length(camera_vec))
@@ -57,7 +55,7 @@ dir.create(folder_results, recursive = TRUE)
 dir.create(folder_data, recursive = TRUE)
 
 ###################################
-# Here the analysis start
+# Start analysis - do not edit
 ###################################
 
 # Analyse all cameras
@@ -77,7 +75,7 @@ for(i in 1:length(camera_vec)){
   # Base directory for the results
   path_base <- paste0(folder_results,"/000",camera_5digit,"/")
   
-  # Analysis only if not analyzed before
+  # Analyze only if not analyzed before
   if(!file.exists(path_base)){
     
     # Directory of images
@@ -89,7 +87,8 @@ for(i in 1:length(camera_vec)){
                                               hour_analysis=hour_analysis,
                                               testmode=testmode,
                                               folder_results=folder_results,
-                                              folder_data=folder_data),
+                                              folder_data=folder_data,
+                                              k_vec=c(4,5)),
                                silent=FALSE))
     
     # Delete images after analysis
@@ -97,7 +96,7 @@ for(i in 1:length(camera_vec)){
     
     if(!no_error[i]){
       
-      # If an error occurrde: Delete folder of results
+      # If an error occurred: Delete folder of results
       system(paste0("rm -rf ",path_base))
       
     }
@@ -119,9 +118,9 @@ for(i in 1:length(camera_vec)){
   write.csv(success, file=paste0("results/amos/success_",camera_vec[1],
                                  "_to_",camera_vec[length(camera_vec)],".csv"))
   
-  gc()
+  print(gc())
 }
 
-(time_end <- Sys.time())
+time_end <- Sys.time()
 
 print(time_end - time_start)

@@ -7,6 +7,6 @@ bibentry(bibtype = "article",
                     person("Goeran", "Kauermann")),
          year = 2016,
 	journal = "PLOS ONE",
-note="under review",)
+note="Under review",)
 
 
