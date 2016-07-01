@@ -12,7 +12,7 @@ sroi_analysis(folder_results = paste0(getwd(), "/"),
   main_camera = NULL, n_pinpricks = 1, seed = 12345,
   threshold_vec = 0.9, a_vec = seq(1, 150, by = 1), b_vec = seq(1, 100, by
   = 1), lists_files, which_images = seq_len(length(lists_files)), doy,
-  doy_c = doy, which_images_background = 1)
+  doy_c = doy, which_images_background = 1, x = NULL, y = NULL)
 }
 \arguments{
 \item{folder_results}{Folder where the results will be saved}
@@ -26,6 +26,9 @@ pinpricks are extracted}
 
 \item{correlate_timeseries}{If \code{TRUE} (default), correlation images 
 are computed}
+
+\item{do_evaluation}{If \code{TRUE} (default), correlation images and time
+series are saved}
 
 \item{do_strucchange}{If \code{TRUE} (default), optimality criteria are
 computed and best mask is saved}
@@ -56,8 +59,9 @@ of more than one year is analyzed, else \code{doy}}
 
 \item{which_images_background}{Index of background image}
 
-\item{do_evalutaion}{If \code{TRUE} (default), correlation images and time
-series are saved}
+\item{x}{vector of x-coordinates of analyzed pixels}
+
+\item{y}{vector of y-coordinates of analyzed pixels}
 }
 \description{
 This function allows to carry out an entire sROI analysis for given 

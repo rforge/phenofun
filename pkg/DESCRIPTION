@@ -4,9 +4,9 @@ Version: 0.1.1
 Authors@R: "Ludwig Bothmann <ludwig.bothmann@stat.uni-muenchen.de> [aut, cre]"
 Author: Ludwig Bothmann [aut, cre], Michael Matiu [ctb]
 Maintainer: Ludwig Bothmann <ludwig.bothmann@stat.uni-muenchen.de>
-Description: Automated processing of webcam images for phenological classification. uROI method is fully implemented, sROI toDo.
+Description: Automated processing of webcam images for phenological classification. uROI method is fully implemented, sROI method is fully implemented, supervised classification method todo.
 Depends: R (>= 3.2.1)
-Imports: EBImage, irlba, strucchange, abind
+Imports: EBImage, irlba, strucchange, abind, MASS
 License: GPL  (>=2)
 LazyData: true
 RoxygenNote: 5.0.1

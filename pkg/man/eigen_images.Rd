@@ -4,7 +4,7 @@
 \alias{eigen_images}
 \title{Function to compute  the eigenimages of a given set of images}
 \usage{
-eigen_images(images, n_pc = 5, varimax_rotation = FALSE)
+eigen_images(images, n_pc = 5, varimax_rotation = FALSE, total_var = TRUE)
 }
 \arguments{
 \item{images}{array of pixel intensities, 3rd dimension has to be the
@@ -15,6 +15,8 @@ means that \code{dim(images) = (*,*,1,*)}, for color images
 \item{n_pc}{number of eigenimages}
 
 \item{varimax_rotation}{boolean: Shall varimax rotation be performed?}
+
+\item{total_var}{Shall total variance be computed? Else 1.}
 }
 \description{
 Images can be either grayscale images or color images. 

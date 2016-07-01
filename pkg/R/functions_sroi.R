@@ -16,7 +16,7 @@
 #'  pinpricks are extracted
 #' @param correlate_timeseries If \code{TRUE} (default), correlation images 
 #'  are computed
-#' @param do_evaluaion If \code{TRUE} (default), correlation images and time
+#' @param do_evaluation If \code{TRUE} (default), correlation images and time
 #'  series are saved
 #' @param do_strucchange If \code{TRUE} (default), optimality criteria are
 #'  computed and best mask is saved
@@ -34,6 +34,8 @@
 #' @param doy_c Vector of DOYs for each image, continouing over a change of year
 #'  of more than one year is analyzed, else \code{doy}
 #' @param which_images_background Index of background image
+#' @param x vector of x-coordinates of analyzed pixels
+#' @param y vector of y-coordinates of analyzed pixels
 #' @export
 sroi_analysis <- function(folder_results=paste0(getwd(),"/"),
                           folder_data=paste0(getwd(),"/"),
@@ -53,7 +55,9 @@ sroi_analysis <- function(folder_results=paste0(getwd(),"/"),
                           which_images=seq_len(length(lists_files)),
                           doy,
                           doy_c=doy,
-                          which_images_background=1){
+                          which_images_background=1,
+                          x=NULL,
+                          y=NULL){
   
   #################################################################
   # Steps:
@@ -98,12 +102,6 @@ sroi_analysis <- function(folder_results=paste0(getwd(),"/"),
   # 	- Save pinpricks as jpg
   #################################################################
   
-  # Set parameter for background image
-  x <- 1285:2560
-  y <- 1:960
-  col_out <- 1:3
-  col_in <- 1:3
-  
   # Read background image
   images <- read_images(colormode="Color",
                         folder=folder_data,
@@ -111,8 +109,8 @@ sroi_analysis <- function(folder_results=paste0(getwd(),"/"),
                         which_images=which_images_background,
                         x=x,
                         y=y,
-                        col_out=col_out,
-                        col_in=col_in,
+                        col_out=1:3,
+                        col_in=1:3,
                         sum1=FALSE,
                         norm_it=FALSE,
                         colorspace="rgb")
@@ -411,9 +409,6 @@ sroi_analysis <- function(folder_results=paste0(getwd(),"/"),
   
   cat(as.character(Sys.time()),": read images \n")
   
-  x <- 1285:2560
-  y <- 1:960
-  
   # Read images
   images <- read_images(colormode="Grayscale",
                         folder=folder_data,
@@ -579,9 +574,9 @@ sroi_analysis <- function(folder_results=paste0(getwd(),"/"),
     
     # Save image with optimal pinprick
     imgn2 <- img_color/1.5
-    imgn2[x_start[max_corr$wm1]:(x_start[max_corr$wm1]+5),y_start[max_corr$wm1]:(y_start[max_corr$wm1]+5),2,] <- 1
-    imgn2[x_start[max_corr$wm1]:(x_start[max_corr$wm1]+5),y_start[max_corr$wm1]:(y_start[max_corr$wm1]+5),1,] <- 1
-    imgn2[x_start[max_corr$wm1]:(x_start[max_corr$wm1]+5),y_start[max_corr$wm1]:(y_start[max_corr$wm1]+5),3,] <- 0
+    imgn2[x_start[pinprick_opt]:(x_start[pinprick_opt]+5),y_start[pinprick_opt]:(y_start[pinprick_opt]+5),2,] <- 1
+    imgn2[x_start[pinprick_opt]:(x_start[pinprick_opt]+5),y_start[pinprick_opt]:(y_start[pinprick_opt]+5),1,] <- 1
+    imgn2[x_start[pinprick_opt]:(x_start[pinprick_opt]+5),y_start[pinprick_opt]:(y_start[pinprick_opt]+5),3,] <- 0
     writeImage(imgn2,files=paste0(folder_results,name_of_analysis,
                                   "/best_pinprick.jpg"))
     

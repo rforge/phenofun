@@ -5,17 +5,9 @@
 # Autoren: Ludwig Bothmann
 ##############################################
 
-#################################################################
-#	0. Set parameters
-#################################################################
-
 rm(list=ls())
 
-setwd("/home/bothmannlu/Desktop/sroi_test/")
-
-library("EBImage")
-library("irlba")
-library("strucchange")
+setwd("../../../../Desktop/sroi_test/")
 
 # Load package "phenofun"
 library(devtools)
@@ -38,7 +30,7 @@ do_strucchange <- TRUE
 color <- "green"
 
 # Name of analyis (for path of results)
-name_of_analysis <- "160701"
+name_of_analysis <- "160701_2"
 
 # Folder of results
 path_base <- "results/"
@@ -49,8 +41,8 @@ folder <- "../../Dokumente/Phenology/data/WebCam/cam7/"
 # Vector with file names of relevant images
 lists_files <- list.files(path=folder)[-(1:8)]
 
-# Number of images to be analyzed
-which_images <- c(1001:2441)[round(seq(1,1441,length=100))]
+# Indices of images to be analyzed
+which_images <- c(1001:2441)#[round(seq(1,1441,length=100))]
 
 # Which image is background image for overlay plots?
 which_images_background <- 1500
@@ -70,13 +62,17 @@ main_camera <- "Kranzberg 2 - 2014"
 n_regions <- 2
 
 # Vector with thresholds for correlations
-threshold_vec <- seq(.5, .9, length=2)#by=.05)
+threshold_vec <- seq(.5, .9, by=.05)#length=2)
 
 # Set seed
 seed <- 1014
 
+# Dimensions of image
+x <- 1285:2560
+y <- 1:960
+
 #################################################################
-#	1. Carry out sroi analysis
+#	Carry out sroi analysis
 #################################################################
 
 # Print sessionInfo and save time of start
@@ -98,7 +94,9 @@ sroi_analysis(get_timeseries=get_timeseries,
               lists_files=lists_files,
               which_images=which_images,
               doy=doy,
-              doy_c=doy_c)
+              doy_c=doy_c,
+              x=1285:2560,
+              y=1:960)
 
 print(gc())
 time_end <- Sys.time()

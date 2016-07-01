@@ -5,8 +5,9 @@
 \title{Display the eigenimages and effect of a multiple on the mean image}
 \usage{
 display_eigen(eigenimages, colormode = "Color", n_pc, images_flat_mean,
-  fact = 100, do_sum_diff = TRUE, sum1 = FALSE, save_it = FALSE,
-  save_file = NULL, show_eigen = TRUE, colorspace = "rgb")
+  fact = NULL, do_sum_diff = TRUE, sum1 = FALSE, save_it = FALSE,
+  save_file = NULL, show_eigen = TRUE, colorspace = "rgb",
+  scores = NULL)
 }
 \arguments{
 \item{eigenimages}{eigen images as 3D or 4D array, depending on the
@@ -37,6 +38,9 @@ default is \code{TRUE}}
 
 \item{colorspace}{either \code{"rgb"} or \code{"hsv"}, 
 default is \code{"rgb"}}
+
+\item{scores}{scores matrix, only necessary if \code{fast==NULL} 
+to compute minimal and maximal scores}
 }
 \description{
 This function displays the mean image and all eigenimages. 

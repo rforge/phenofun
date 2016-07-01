@@ -6,7 +6,7 @@
 \usage{
 display_scores(scores, year, doy, complete_year = TRUE, which_year = 2000,
   which_images = NULL, n_show, save_it = FALSE, save_file = NULL,
-  main = NULL, sep_plots = FALSE)
+  main = NULL, sep_plots = FALSE, plot_lowess = TRUE, ...)
 }
 \arguments{
 \item{scores}{matrix of scores, row \code{i} contains all scores to the
@@ -35,6 +35,10 @@ default is \code{FALSE}}
 
 \item{sep_plots}{\code{TRUE}: Each score in a separate plot, 
 default is \code{FALSE}}
+
+\item{plot_lowess}{If \code{TRUE} (default), LOWESS estimators are plotted}
+
+\item{...}{Further arguments}
 }
 \description{
 This function averages the scores of all images taken at the same day
