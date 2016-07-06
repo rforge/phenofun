@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions_uroi.R
 \name{find_clusters}
 \alias{find_clusters}
-\title{Function to find pixel clusters in a set of images}
+\title{Function clusters in a set of images}
 \usage{
 find_clusters(x = NULL, y = NULL, folder, lists_files,
   which_images = seq_len(length(lists_files)), n_pc_vec, k_vec, nstart = 1,
@@ -10,13 +10,16 @@ find_clusters(x = NULL, y = NULL, folder, lists_files,
   colormode = "Color")
 }
 \arguments{
-\item{x}{Vector of x-coordinates to read in.}
+\item{x}{Vector of x-coordinates to read in. Default \code{NULL} results in 
+a grid of all possible values.}
 
-\item{y}{Vector of y-coordinates to read in.}
+\item{y}{Vector of y-coordinates to read in. Default \code{NULL} results in 
+a grid of all possible values.}
 
-\item{folder}{The folder that contains the images to be read in.}
+\item{folder}{The folder which contains the images.}
 
-\item{lists_files}{A vector containing the names of all images to be read in.}
+\item{lists_files}{A vector containing the names of all images inside 
+\code{folder} to be read in.}
 
 \item{which_images}{An optional vector to select images from \code{lists_files}.
 Default is \code{seq_len(length(lists_files))}}
@@ -31,14 +34,16 @@ Default is \code{seq_len(length(lists_files))}}
 
 \item{name_of_analysis}{Name of the analysis (for file name of the results)}
 
-\item{save_results}{Boolean, shall the results be saved on the disc? Default to \code{FALSE}.}
+\item{save_results}{\code{TRUE}: Results are saved on the disc, default is 
+\code{FALSE}.}
 
-\item{colormode}{The color mode, eiteher \code{Color} or \code{Grayscale}}
+\item{colormode}{The color mode, either \code{Color} or \code{Grayscale}}
 }
 \value{
 A list containing the clusters and settings
 }
 \description{
-Function to find pixel clusters in a set of images
+Singular value decomposition and k-means clustering is used to find clusters
+ of pixels which have a similar behavior through the year.
 }
 

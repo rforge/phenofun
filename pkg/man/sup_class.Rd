@@ -97,8 +97,14 @@ else the first \code{n_images_try} are analyzed (only for testing)}
 
 \item{mask}{Do not edit, mask is loaded, if needed}
 }
+\value{
+An entire supervised classification analysis is carried out.
+ All results are saved on the disc, the necessary folders are created.
+}
 \description{
 This function allows to carry out an eigenanalysis of given webcam data
- and a supervised classification of DOYs with respect to seasons
+ and a supervised classification of DOYs with respect to seasons. 
+ Example code can be downloaded at 
+ \url{http://bothmann.userweb.mwn.de/dissertation.html}.
 }
 

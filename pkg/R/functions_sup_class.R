@@ -7,7 +7,9 @@
 #' Function for eigenanalysis and supervised classification
 #' 
 #' This function allows to carry out an eigenanalysis of given webcam data
-#'  and a supervised classification of DOYs with respect to seasons
+#'  and a supervised classification of DOYs with respect to seasons. 
+#'  Example code can be downloaded at 
+#'  \url{http://bothmann.userweb.mwn.de/dissertation.html}.
 #'  
 #' @param folder_results Folder where the results will be saved
 #' @param folder_data Folder where the data is saved
@@ -55,6 +57,8 @@
 #' @param n_images_try See complete_year
 #' @param seasons_newyear Vector with true seasons of the test year
 #' @param mask Do not edit, mask is loaded, if needed
+#' @return An entire supervised classification analysis is carried out.
+#'  All results are saved on the disc, the necessary folders are created.
 #' @export
 #' @import MASS
 sup_class <- function(folder_results=paste0(getwd(),"/"),

@@ -5,21 +5,23 @@
 ###########################################################################
 
 
-#' Function to compute  the eigenimages of a given set of images
+#' Compute eigenimages of a given set of images
 #' 
 #' Images can be either grayscale images or color images. 
 #' 	The function computes the eigenimages (considering each pixel
-#' 	as different variable, i.e. no penalization) and eigenvalues.
+#' 	as different variable, i.e., no penalization) and eigenvalues.
 #' 	
 #' @param images array of pixel intensities, 3rd dimension has to be the
 #' 	color channels, 4th dimension the time. For grayscale images this
 #' 	means that \code{dim(images) = (*,*,1,*)}, for color images 
 #' 	\code{dim(images) = (*,*,3,*)}
 #' @param n_pc number of eigenimages
-#' @param varimax_rotation boolean: Shall varimax rotation be performed?
-#' @param total_var Shall total variance be computed? Else 1.
+#' @param varimax_rotation \code{TRUE}: Varimax rotation is carried out, 
+#'  default is \code{FALSE}
+#' @param total_var \code{TRUE} (default): Total variance is computed.
 #' @import EBImage
 #' @import irlba
+#' @return List with eigenimages, singular values and total variance.
 eigen_images <- function(images,
                          n_pc=5,
                          varimax_rotation=FALSE,
@@ -175,18 +177,16 @@ eigen_images <- function(images,
 #' This function projects each image on each eigenimage. Appropriate
 #' 	only if images can be given as large array. Will need another
 #' 	function if images shall be projected step by step due to 
-#' 	small working memory. Currently, images are centered around the
-#' 	mean image based on the images. Is it better to center around the
-#' 	images used to extract the eigenimages?
+#' 	small working memory. 
 #' 	
 #' @param images array containing the images
 #' @param eigenimages array containing the eigenimages
-#' @param center Shall the images be centered around the mean? 
-#' 			Default is \code{TRUE}
-#' @param norm_cols Shall columns of the eigenimages be normed to length 1?
+#' @param center \code{TRUE} (default): Images are centered around the mean.
+#' @param norm_cols \code{TRUE}: Columns of the eigenimages are normed to length 1.
 #' 			Not necessary if these are real eigenimages because then the
 #' 			normalization is a result of the pca. Otherwise it could
-#' 			make sense.
+#' 			make sense. Default is \code{FALSE}.
+#' @return Matrix with the scores.
 #' @export
 scores_images <- function(images, 
 								  eigenimages,
@@ -228,31 +228,32 @@ scores_images <- function(images,
 # display_eigen()
 ###################################
 
-#' Display the eigenimages and effect of a multiple on the mean image
+#' Display eigenimages and effect of eigenimage on the mean image
 #' 
-#' This function displays the mean image and all eigenimages. 
-#' 	Additionaly, the sum and difference of the mean image and a 
-#' 	suitable multiple of the images is shown optionally.
+#' This function displays/saves the mean image and all eigenimages. 
+#' 	Additionally, sums and differences of mean image and
+#' 	weighted eigenimages are shown.
 #' 	
-#' @param eigenimages eigen images as 3D or 4D array, depending on the
+#' @param eigenimages eigenimages as 3D or 4D array, depending on the
 #' 			color mode
 #' @param colormode either \code{Color} or \code{Grayscale}
 #' @param n_pc  number of eigenimages
 #' @param images_flat_mean mean image as vector
-#' @param fact the factor, the eigenimages should be multiplied with
-#' @param do_sum_diff \code{TRUE}: Sum and difference are displayed - 
-#' 			default.# At the moment, this option works only for 
-#' 			\code{sum1=FALSE}
-#' @param sum1 \code{TRUE}: Pixel intensities are normed to sum=1, i.e. 
+#' @param fact the factor, the eigenimages should be multiplied with. 
+#'  The default \code{NULL} results in weights which represent 80\% of the 
+#'  maximal and minimal score per eigenimage.
+#' @param do_sum_diff \code{TRUE} (default): Sum and difference are displayed.
+#' 			At the moment, this option works only for 
+#' 			\code{sum1=FALSE}.
+#' @param sum1 \code{TRUE}: Pixel intensities are normed to sum=1, i.e., 
 #' 	relative intensities are computed, default is \code{FALSE}
 #' @param save_it \code{TRUE}: Images are saved rather than displayed, 
 #' 	default is \code{FALSE}
 #' @param save_file filename to save the images
-#' @param show_eigen \code{TRUE}: Eigenimages are displayed/saved,
-#' 	default is \code{TRUE}
+#' @param show_eigen \code{TRUE} (default): Eigenimages are displayed/saved.
 #' @param colorspace either \code{"rgb"} or \code{"hsv"}, 
 #' 	default is \code{"rgb"}
-#' @param scores scores matrix, only necessary if \code{fast==NULL} 
+#' @param scores scores matrix, only necessary if \code{fact==NULL} 
 #' 	to compute minimal and maximal scores
 display_eigen <- function(eigenimages,
                           colormode = "Color",
@@ -735,7 +736,7 @@ display_eigen <- function(eigenimages,
 # display_scores()
 ###################################
 
-#' Plot scores on different eigenimages
+#' Plot scores on eigenimages
 #' 
 #' This function averages the scores of all images taken at the same day
 #' 	and plots these averaged scores.
@@ -744,17 +745,17 @@ display_eigen <- function(eigenimages,
 #' 			\code{i}-th eigenimage
 #' @param year vector containing the year of the image
 #' @param doy vector containing the doy of the image
-#' @param complete_year \code{TRUE} complete years specified in 
+#' @param complete_year \code{TRUE} (default): Complete year(s) specified in 
 #' 			which_year is displayed, otherwise the scores of
-#' 			\code{which_images} are displayed, default is \code{TRUE}
-#' @param which_year vector specifying the years to be shown
+#' 			\code{which_images} are displayed.
+#' @param which_year vector specifying the year(s) to be shown
 #' @param which_images vector specifying the indices of scores to be shown
-#' @param n_show number of shown scores time series
+#' @param n_show number of scores time series to be shown
 #' @param save_it \code{TRUE}: Plots are saved rather than displayed, 
 #' 	default is \code{FALSE}
 #' @param save_file filename to save the images
 #' @param main title of the plots
-#' @param sep_plots \code{TRUE}: Each score in a separate plot, 
+#' @param sep_plots \code{TRUE}: Each score time series gets a separate plot, 
 #' 	default is \code{FALSE}
 #' @param plot_lowess If \code{TRUE} (default), LOWESS estimators are plotted
 #' @param ... Further arguments
@@ -1018,8 +1019,8 @@ display_scores <- function(scores,
 #' @param display_restored	\code{TRUE}: restored images are 
 #' 			displayed. Default is \code{TRUE}		
 #' @param relative \code{TRUE}: Relative images. Default is \code{FALSE}
-#' @param col_in input color channel: red=1, green=2, blue=3. Default ist 2.	
-#' @return restored \code{Image} object with restored images
+#' @param col_in input color channel if \code{relative==TRUE}: red=1, green=2, blue=3. Default ist 2.	
+#' @return \code{Image} object with restored images
 #' @import irlba
 #' @import EBImage
 #' @export

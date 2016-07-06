@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions_input.R
 \name{read_images}
 \alias{read_images}
-\title{Function to read images into an array}
+\title{Read images into an array}
 \usage{
 read_images(colormode = "Color", dim_images = NULL, folder, file_names,
   which_images, x = seq_len(dim_images[1]), y = seq_len(dim_images[2]),
@@ -21,9 +21,11 @@ read_images(colormode = "Color", dim_images = NULL, folder, file_names,
 \item{which_images}{indices of the images to read, 
 relative to \code{file_names}}
 
-\item{x}{which x-values shall be read in?}
+\item{x}{Vector of x-coordinates to read in. Default \code{NULL} results in 
+a grid of all possible values.}
 
-\item{y}{which y-values shall be read in?}
+\item{y}{Vector of y-coordinates to read in. Default \code{NULL} results in 
+a grid of all possible values.}
 
 \item{col_out}{which color-channels shall be read in?}
 
@@ -35,23 +37,22 @@ relative intensities are computed, default is \code{FALSE}}
 \item{norm_it}{\code{TRUE}: Images are normed so that column, row and 
 colour channel intensities have sum=1 or mean=0, default is \code{FALSE}}
 
-\item{norm_type}{Type of normalisation, either sum of each image = 1, 
+\item{norm_type}{Type of normalization, either sum of each image = 1, 
 i.e., \code{"sum1"}, or mean of each image = 0, i.e., \code{"mean0"},
 default \code{"sum1"}}
 
 \item{colorspace}{either \code{"rgb"} or \code{"hsv"}, 
 default is \code{"rgb"}}
 
-\item{relative}{\code{TRUE}: If only one colour channel should be extracted
-from a colour image, then the channel is given out relative to the
-other to channels, default is \code{FALSE}. Will probably not work
-if the input is a Grayscale image...}
+\item{relative}{\code{TRUE}: If only one colour channel shall be extracted
+from a colour image, then this channel is returned relatively to the
+other two channels, default is \code{FALSE}.}
 }
 \value{
 An array containing the images. If \code{sum1=TRUE}, then the 
 	third colour channel is dropped to save memory.
 }
 \description{
-Function to read images into an array
+This function reads in a set of images and returns all images as an array.
 }
 

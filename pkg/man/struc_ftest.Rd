@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions_strucchange.R
 \name{struc_ftest}
 \alias{struc_ftest}
-\title{Function to apply optimality criterion 1 on \%greenness time series}
+\title{Apply optimality criterion 1 on \%greenness time series}
 \usage{
 struc_ftest(mean_doy_norm, cut240 = TRUE, x_vec = NULL, uROI = TRUE,
   settings)
@@ -10,18 +10,21 @@ struc_ftest(mean_doy_norm, cut240 = TRUE, x_vec = NULL, uROI = TRUE,
 \arguments{
 \item{mean_doy_norm}{matrix with \%greenness time series in rows}
 
-\item{cut240}{Cut at DOY 240? Default is \code{TRUE}}
+\item{cut240}{\code{TRUE} (default): Cut at DOY 240}
 
-\item{x_vec}{Optionaly vector of DOYs}
+\item{x_vec}{Optional vector of DOYs}
 
 \item{uROI}{\code{TRUE}: uROI, \code{FALSE}: sROI. Default is \code{TRUE}}
 
 \item{settings}{MAtrix with settings, only for sROI.}
 }
 \value{
-max_f Maximal f statistics
+List with \code{max_f}, the matrix of OC1 values (in constant and
+ linear version) for each row of \code{mean_doy_norm} and \code{wm1} and 
+ \code{wmx}, the indices of the best ROI regarding constant and linear 
+ versions.
 }
 \description{
-Function to apply optimality criterion 1 on \%greenness time series
+Apply optimality criterion 1 on \%greenness time series
 }
 

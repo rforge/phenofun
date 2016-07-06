@@ -9,12 +9,14 @@
 # revise_seasons()
 ###################################
 
-#' Function to revise classified seasons to extract unique onset days of seasons
+#' Revise classified seasons to extract unique onset days of seasons
 #' 
 #' @param doys vector of given doys
 #' @param seasons_pred vector with predicted seasons
 #' @import EBImage
 #' @import irlba
+#' @return List with revised time series of seasons and extracted unique season
+#'  onset dates.
 #' @export
 revise_seasons <- function(doys,
 									seasons_pred){

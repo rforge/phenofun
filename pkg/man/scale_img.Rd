@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions_input.R
 \name{scale_img}
 \alias{scale_img}
-\title{Function to scale a Grayscale image to mean 0 and variance 1}
+\title{Scale grayscale images to mean 0 and variance 1}
 \usage{
 scale_img(images, center = TRUE, scale = TRUE)
 }
@@ -12,13 +12,14 @@ color channels, 4th dimension the time. For grayscale images this
 means that \code{dim(images) = (*,*,1,*)}, for color images 
 \code{dim(images) = (*,*,3,*)}}
 
-\item{center}{boolean, shall the images be centered? 
-default is \code{TRUE}}
+\item{center}{\code{TRUE} (default): Images are centered}
 
-\item{scale}{boolean, shall the images be standardized to variance 1? 
-default is \code{TRUE}}
+\item{scale}{\code{TRUE} (default): Images are standardized to variance 1}
+}
+\value{
+The scaled images as array
 }
 \description{
-Function to scale a Grayscale image to mean 0 and variance 1
+Scale grayscale images to mean 0 and variance 1
 }
 

@@ -14,7 +14,10 @@ means that \code{dim(images) = (*,*,1,*)}, for color images
 
 \item{mask}{matrix with 0/1 giving the mask}
 }
+\value{
+Array with same dimension as input array.
+}
 \description{
-Masks images with given mask, i.e., deletes pixels which are not in the mask
+Masks images with given mask, i.e., sets pixel values to 0 which are not in the mask
 }
 

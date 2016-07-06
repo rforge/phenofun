@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions_classification.R
 \name{revise_seasons}
 \alias{revise_seasons}
-\title{Function to revise classified seasons to extract unique onset days of seasons}
+\title{Revise classified seasons to extract unique onset days of seasons}
 \usage{
 revise_seasons(doys, seasons_pred)
 }
@@ -11,7 +11,11 @@ revise_seasons(doys, seasons_pred)
 
 \item{seasons_pred}{vector with predicted seasons}
 }
+\value{
+List with revised time series of seasons and extracted unique season
+ onset dates.
+}
 \description{
-Function to revise classified seasons to extract unique onset days of seasons
+Revise classified seasons to extract unique onset days of seasons
 }
 

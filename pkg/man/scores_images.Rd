@@ -11,20 +11,20 @@ scores_images(images, eigenimages, center = TRUE, norm_cols = FALSE)
 
 \item{eigenimages}{array containing the eigenimages}
 
-\item{center}{Shall the images be centered around the mean? 
-Default is \code{TRUE}}
+\item{center}{\code{TRUE} (default): Images are centered around the mean.}
 
-\item{norm_cols}{Shall columns of the eigenimages be normed to length 1?
+\item{norm_cols}{\code{TRUE}: Columns of the eigenimages are normed to length 1.
 Not necessary if these are real eigenimages because then the
 normalization is a result of the pca. Otherwise it could
-make sense.}
+make sense. Default is \code{FALSE}.}
+}
+\value{
+Matrix with the scores.
 }
 \description{
 This function projects each image on each eigenimage. Appropriate
 	only if images can be given as large array. Will need another
 	function if images shall be projected step by step due to 
-	small working memory. Currently, images are centered around the
-	mean image based on the images. Is it better to center around the
-	images used to extract the eigenimages?
+	small working memory.
 }
 

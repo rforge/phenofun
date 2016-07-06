@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions_eigenanalysis.R
 \name{display_eigen}
 \alias{display_eigen}
-\title{Display the eigenimages and effect of a multiple on the mean image}
+\title{Display eigenimages and effect of eigenimage on the mean image}
 \usage{
 display_eigen(eigenimages, colormode = "Color", n_pc, images_flat_mean,
   fact = NULL, do_sum_diff = TRUE, sum1 = FALSE, save_it = FALSE,
@@ -10,7 +10,7 @@ display_eigen(eigenimages, colormode = "Color", n_pc, images_flat_mean,
   scores = NULL)
 }
 \arguments{
-\item{eigenimages}{eigen images as 3D or 4D array, depending on the
+\item{eigenimages}{eigenimages as 3D or 4D array, depending on the
 color mode}
 
 \item{colormode}{either \code{Color} or \code{Grayscale}}
@@ -19,13 +19,15 @@ color mode}
 
 \item{images_flat_mean}{mean image as vector}
 
-\item{fact}{the factor, the eigenimages should be multiplied with}
+\item{fact}{the factor, the eigenimages should be multiplied with. 
+The default \code{NULL} results in weights which represent 80\% of the 
+maximal and minimal score per eigenimage.}
 
-\item{do_sum_diff}{\code{TRUE}: Sum and difference are displayed - 
-default.# At the moment, this option works only for 
-\code{sum1=FALSE}}
+\item{do_sum_diff}{\code{TRUE} (default): Sum and difference are displayed.
+At the moment, this option works only for 
+\code{sum1=FALSE}.}
 
-\item{sum1}{\code{TRUE}: Pixel intensities are normed to sum=1, i.e. 
+\item{sum1}{\code{TRUE}: Pixel intensities are normed to sum=1, i.e., 
 relative intensities are computed, default is \code{FALSE}}
 
 \item{save_it}{\code{TRUE}: Images are saved rather than displayed, 
@@ -33,18 +35,17 @@ default is \code{FALSE}}
 
 \item{save_file}{filename to save the images}
 
-\item{show_eigen}{\code{TRUE}: Eigenimages are displayed/saved,
-default is \code{TRUE}}
+\item{show_eigen}{\code{TRUE} (default): Eigenimages are displayed/saved.}
 
 \item{colorspace}{either \code{"rgb"} or \code{"hsv"}, 
 default is \code{"rgb"}}
 
-\item{scores}{scores matrix, only necessary if \code{fast==NULL} 
+\item{scores}{scores matrix, only necessary if \code{fact==NULL} 
 to compute minimal and maximal scores}
 }
 \description{
-This function displays the mean image and all eigenimages. 
-	Additionaly, the sum and difference of the mean image and a 
-	suitable multiple of the images is shown optionally.
+This function displays/saves the mean image and all eigenimages. 
+	Additionally, sums and differences of mean image and
+	weighted eigenimages are shown.
 }
 

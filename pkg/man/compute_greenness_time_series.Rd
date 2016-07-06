@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions_uroi.R
 \name{compute_greenness_time_series}
 \alias{compute_greenness_time_series}
-\title{Function to mask images and compute \%greenness time series (per doy)}
+\title{Mask images and compute \%greenness time series}
 \usage{
 compute_greenness_time_series(color = "green", x = NULL, y = NULL, folder,
   lists_files, which_images = seq_len(length(lists_files)), doy, path_base,
@@ -12,13 +12,16 @@ compute_greenness_time_series(color = "green", x = NULL, y = NULL, folder,
 \arguments{
 \item{color}{Color to compute the \%color time series. Default is \code{"green"}}
 
-\item{x}{Vector of x-coordinates to read in.}
+\item{x}{Vector of x-coordinates to read in. Default \code{NULL} results in 
+a grid of all possible values.}
 
-\item{y}{Vector of y-coordinates to read in.}
+\item{y}{Vector of y-coordinates to read in. Default \code{NULL} results in 
+a grid of all possible values.}
 
-\item{folder}{The folder that contains the images to be read in.}
+\item{folder}{The folder which contains the images.}
 
-\item{lists_files}{A vector containing the names of all images to be read in.}
+\item{lists_files}{A vector containing the names of all images inside 
+\code{folder} to be read in.}
 
 \item{which_images}{An optional vector to select images from \code{lists_files}.
 Default is \code{seq_len(length(lists_files))}}
@@ -33,15 +36,15 @@ Default is \code{seq_len(length(lists_files))}}
 
 \item{settings_mat}{Matrix with all settings from find_clusters}
 
-\item{load_masks}{Boolean: Shall the masks be loaded from the disc? Otherwise, results from generate
-masks can be given as masks_list}
+\item{load_masks}{Boolean: Shall the masks be loaded from the disc? Otherwise, 
+results from \code{\link{generate_masks}} can be given as \code{masks_list}}
 
-\item{masks_list}{A list containing the masks, possibly output from \code{generate_masks()}}
+\item{masks_list}{A list containing the masks, possibly output from \code{\link{generate_masks}}}
 }
 \value{
 A list containing the mean doy time series and settings
 }
 \description{
-Function to mask images and compute \%greenness time series (per doy)
+For given ROIs, the \%greenness time series inside the ROIs is computed on doy level
 }
 

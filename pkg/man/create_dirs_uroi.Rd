@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions_uroi.R
 \name{create_dirs_uroi}
 \alias{create_dirs_uroi}
-\title{Function to create the directories for the results}
+\title{Create directories for the results}
 \usage{
 create_dirs_uroi(path_base = NULL, name_of_analysis)
 }
@@ -12,9 +12,10 @@ create_dirs_uroi(path_base = NULL, name_of_analysis)
 \item{name_of_analysis}{Name of the analysis}
 }
 \value{
-Nothing
+Directories \code{path_base/name_of_analysis/mask_timeseries} and
+ \code{path_base/name_of_analysis/masks} are created
 }
 \description{
-Function to create the directories for the results
+This function creates the specified directories
 }
 

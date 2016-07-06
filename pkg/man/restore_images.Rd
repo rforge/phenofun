@@ -29,10 +29,10 @@ displayed. Default is \code{TRUE}}
 
 \item{relative}{\code{TRUE}: Relative images. Default is \code{FALSE}}
 
-\item{col_in}{input color channel: red=1, green=2, blue=3. Default ist 2.}
+\item{col_in}{input color channel if \code{relative==TRUE}: red=1, green=2, blue=3. Default ist 2.}
 }
 \value{
-restored \code{Image} object with restored images
+\code{Image} object with restored images
 }
 \description{
 This function restores images using given eigenimages and scores

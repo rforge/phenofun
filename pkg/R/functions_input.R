@@ -4,7 +4,9 @@
 # Author: Ludwig Bothmann
 ###########################################################################
 
-#' Function to read images into an array
+#' Read images into an array
+#' 
+#' This function reads in a set of images and returns all images as an array.
 #' 
 #' @param colormode the output colormode: either "Color" (default) or "Grayscale"
 #' @param dim_images the dimension of the output array
@@ -12,23 +14,24 @@
 #' @param file_names a vector giving the names of the input files
 #' @param which_images indices of the images to read, 
 #' 	relative to \code{file_names} 
-#' @param x which x-values shall be read in?
-#' @param y which y-values shall be read in?
+#' @param x Vector of x-coordinates to read in. Default \code{NULL} results in 
+#'  a grid of all possible values.
+#' @param y Vector of y-coordinates to read in. Default \code{NULL} results in 
+#'  a grid of all possible values.
 #' @param col_out which color-channels shall be read in?
 #' @param col_in which color-channels has the input image?
 #' @param sum1 \code{TRUE}: Pixel intensities are normed to sum=1, i.e. 
 #' 	relative intensities are computed, default is \code{FALSE}
 #' @param norm_it \code{TRUE}: Images are normed so that column, row and 
 #' 	colour channel intensities have sum=1 or mean=0, default is \code{FALSE}
-#' @param norm_type Type of normalisation, either sum of each image = 1, 
+#' @param norm_type Type of normalization, either sum of each image = 1, 
 #' 	i.e., \code{"sum1"}, or mean of each image = 0, i.e., \code{"mean0"},
 #' 	default \code{"sum1"}
 #' @param colorspace either \code{"rgb"} or \code{"hsv"}, 
 #' 	default is \code{"rgb"}
-#' @param relative \code{TRUE}: If only one colour channel should be extracted
-#' 	from a colour image, then the channel is given out relative to the
-#' 	other to channels, default is \code{FALSE}. Will probably not work
-#' 	if the input is a Grayscale image...
+#' @param relative \code{TRUE}: If only one colour channel shall be extracted
+#' 	from a colour image, then this channel is returned relatively to the
+#' 	other two channels, default is \code{FALSE}. 
 #' @return An array containing the images. If \code{sum1=TRUE}, then the 
 #' 	third colour channel is dropped to save memory.
 #' @import EBImage
@@ -240,7 +243,6 @@ read_images <- function(colormode="Color",
 #' @param y_red which y-values shall be read in for the red-channel?
 #' @return An array containing the images.
 #' @import EBImage
-#' @export
 read_images_ndvi <- function(folder,
 									  file_names, 
 									  which_images,
@@ -293,10 +295,8 @@ read_images_ndvi <- function(folder,
 #' 	relative to \code{file_names} 
 #' @param x which x-values shall be read in?
 #' @param y which y-values shall be read in?
-
 #' @return An array containing the images.
 #' @import EBImage
-#' @export
 read_images_pseudo_ndvi <- function(folder,
 												file_names, 
 												which_images,
@@ -575,18 +575,17 @@ sum1_img <- function(images){
 # scale_img()
 ###################################
 
-#' Function to scale a Grayscale image to mean 0 and variance 1
+#' Scale grayscale images to mean 0 and variance 1
 #' 
 #' @param images array of pixel intensities, 3rd dimension has to be the
 #' 	color channels, 4th dimension the time. For grayscale images this
 #' 	means that \code{dim(images) = (*,*,1,*)}, for color images 
 #' 	\code{dim(images) = (*,*,3,*)}
-#' @param center boolean, shall the images be centered? 
-#' 	default is \code{TRUE}
-#' @param scale boolean, shall the images be standardized to variance 1? 
-#' 	default is \code{TRUE}
+#' @param center \code{TRUE} (default): Images are centered
+#' @param scale \code{TRUE} (default): Images are standardized to variance 1
 #' @import EBImage
 #' @import irlba
+#' @return The scaled images as array
 #' @export
 scale_img <- function(images,
 							 center=TRUE,

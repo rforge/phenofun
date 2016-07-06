@@ -7,7 +7,8 @@
 #' Function for sROI analysis
 #' 
 #' This function allows to carry out an entire sROI analysis for given 
-#' webcam data
+#' webcam data. Example code can be downloaded at 
+#' \url{http://bothmann.userweb.mwn.de/dissertation.html}.
 #' 
 #' @param folder_results Folder where the results will be saved
 #' @param folder_data Folder where the data is saved
@@ -34,8 +35,13 @@
 #' @param doy_c Vector of DOYs for each image, continouing over a change of year
 #'  of more than one year is analyzed, else \code{doy}
 #' @param which_images_background Index of background image
-#' @param x vector of x-coordinates of analyzed pixels
-#' @param y vector of y-coordinates of analyzed pixels
+#' @param x Vector of x-coordinates to read in. Default \code{NULL} results in 
+#'  a grid of all possible values.
+#' @param y Vector of y-coordinates to read in. Default \code{NULL} results in 
+#'  a grid of all possible values.
+#' @return An entire sROI analysis is carried out in the automated
+#'  version of multiple random pinpricks. All results are saved on the disc, 
+#'  the necessary folders are created.
 #' @export
 sroi_analysis <- function(folder_results=paste0(getwd(),"/"),
                           folder_data=paste0(getwd(),"/"),

@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions_eigenanalysis.R
 \name{display_scores}
 \alias{display_scores}
-\title{Plot scores on different eigenimages}
+\title{Plot scores on eigenimages}
 \usage{
 display_scores(scores, year, doy, complete_year = TRUE, which_year = 2000,
   which_images = NULL, n_show, save_it = FALSE, save_file = NULL,
@@ -16,15 +16,15 @@ display_scores(scores, year, doy, complete_year = TRUE, which_year = 2000,
 
 \item{doy}{vector containing the doy of the image}
 
-\item{complete_year}{\code{TRUE} complete years specified in 
+\item{complete_year}{\code{TRUE} (default): Complete year(s) specified in 
 which_year is displayed, otherwise the scores of
-\code{which_images} are displayed, default is \code{TRUE}}
+\code{which_images} are displayed.}
 
-\item{which_year}{vector specifying the years to be shown}
+\item{which_year}{vector specifying the year(s) to be shown}
 
 \item{which_images}{vector specifying the indices of scores to be shown}
 
-\item{n_show}{number of shown scores time series}
+\item{n_show}{number of scores time series to be shown}
 
 \item{save_it}{\code{TRUE}: Plots are saved rather than displayed, 
 default is \code{FALSE}}
@@ -33,7 +33,7 @@ default is \code{FALSE}}
 
 \item{main}{title of the plots}
 
-\item{sep_plots}{\code{TRUE}: Each score in a separate plot, 
+\item{sep_plots}{\code{TRUE}: Each score time series gets a separate plot, 
 default is \code{FALSE}}
 
 \item{plot_lowess}{If \code{TRUE} (default), LOWESS estimators are plotted}

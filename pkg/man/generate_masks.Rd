@@ -2,37 +2,40 @@
 % Please edit documentation in R/functions_uroi.R
 \name{generate_masks}
 \alias{generate_masks}
-\title{Function to generate binary masks from the results of a cluster analysis}
+\title{Generate binary masks from the results of a cluster analysis}
 \usage{
 generate_masks(settings, cluster_list, x = NULL, y = NULL, name_of_analysis,
   path_base, return_masks = TRUE, save_masks = TRUE, type = ".tiff")
 }
 \arguments{
 \item{settings}{A matrix containing the analysed settings.
-Preferably the output from \code{find_clusters}.}
+Preferably the output from \code{\link{find_clusters}}.}
 
 \item{cluster_list}{A list with the results of the cluster analysis.
-Preferably the output from \code{find_clusters}.}
+Preferably the output from \code{\link{find_clusters}}.}
 
-\item{x}{Vector of x-coordinates to read in.}
+\item{x}{Vector of x-coordinates to read in. Default \code{NULL} results in 
+a grid of all possible values.}
 
-\item{y}{Vector of y-coordinates to read in.}
+\item{y}{Vector of y-coordinates to read in. Default \code{NULL} results in 
+a grid of all possible values.}
 
 \item{name_of_analysis}{Name of the analysis (for file name of the results)}
 
 \item{path_base}{Base directory}
 
-\item{return_masks}{Boolean: Shall the masks be returned as list?}
+\item{return_masks}{\code{TRUE} (default): Masks are returned as list.}
 
-\item{save_masks}{Boolean: Shall the masks be saved as .RData and .tiff?}
+\item{save_masks}{\code{TRUE} (default): Masks are saved as .RData and .tiff.}
 
 \item{type}{Type of saved images: .tiff, .jpeg, .jpg, .png, ..., everything
-possible in writeImage, see ?writeImage}
+possible in \code{\link{EBImage::writeImage}}, see \code{?EBImage::writeImage}}
 }
 \value{
-Nothing.
+List of masks.
 }
 \description{
-Function to generate binary masks from the results of a cluster analysis
+This function transforms the results of a cluster analysis in a set of 
+ binary masks (or ROIs).
 }
 

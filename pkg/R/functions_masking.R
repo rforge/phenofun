@@ -10,13 +10,14 @@
 
 #' Masks images with given mask
 #' 
-#' Masks images with given mask, i.e., deletes pixels which are not in the mask
+#' Masks images with given mask, i.e., sets pixel values to 0 which are not in the mask
 #' 
 #' @param images array of pixel intensities, 3rd dimension has to be the
 #' 	color channels, 4th dimension the time. For grayscale images this
 #' 	means that \code{dim(images) = (*,*,1,*)}, for color images 
 #' 	\code{dim(images) = (*,*,3,*)}
 #' @param mask matrix with 0/1 giving the mask
+#' @return Array with same dimension as input array.
 #' @export
 mask_img <- function(images,
 							mask){

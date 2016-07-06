@@ -5,14 +5,17 @@
 ###########################################################################
 
 
-#' Function to apply optimality criterion 1 on \%greenness time series
+#' Apply optimality criterion 1 on \%greenness time series
 #' 
 #' @param mean_doy_norm matrix with \%greenness time series in rows
-#' @param cut240 Cut at DOY 240? Default is \code{TRUE}
-#' @param x_vec Optionaly vector of DOYs
+#' @param cut240 \code{TRUE} (default): Cut at DOY 240
+#' @param x_vec Optional vector of DOYs
 #' @param uROI \code{TRUE}: uROI, \code{FALSE}: sROI. Default is \code{TRUE}
 #' @param settings MAtrix with settings, only for sROI.
-#' @return max_f Maximal f statistics
+#' @return List with \code{max_f}, the matrix of OC1 values (in constant and
+#'  linear version) for each row of \code{mean_doy_norm} and \code{wm1} and 
+#'  \code{wmx}, the indices of the best ROI regarding constant and linear 
+#'  versions.
 #' @export
 #' @import strucchange
 struc_ftest <- function(mean_doy_norm, 
@@ -135,12 +138,15 @@ struc_ftest <- function(mean_doy_norm,
 
 
 
-#' Help function for computation of dummy time series
+#' Define dummy time series
+#' 
+#' Define dummy time series for the computation of optimality criterion 2.
 #' 
 #' @param x Vector of time points
 #' @param a First break point at a
 #' @param b Second break point at 365-b
 #' @param doy Vector of doys
+#' @return The dummy time series.
 #' 
 dummy_time <- function(x,a,b, doy=NULL){
 	
@@ -161,13 +167,14 @@ dummy_time <- function(x,a,b, doy=NULL){
 	return(y)
 }
 
-#' Function to apply optimality criterion 2 on \%greenness time series
+#' Apply optimality criterion 2 on \%greenness time series
 #' 
 #' @param mean_doy_norm matrix with \%greenness time series in rows
 #' @param a_vec Vector of possible spring doys
 #' @param b_vec Vector of possible autumn doys (backwards from 31.12.)
 #' @param doy Optional vector of DOYs
-#' @return max_corr Maximal correlations
+#' @return List with \code{max_corr}, the vector of OC2 values for each row of 
+#'  \code{mean_doy_norm} and \code{wm1}, the index of the best ROI
 #' @export
 struc_dummy <- function(mean_doy_norm,
 								a_vec,

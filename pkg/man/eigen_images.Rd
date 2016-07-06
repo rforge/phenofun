@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions_eigenanalysis.R
 \name{eigen_images}
 \alias{eigen_images}
-\title{Function to compute  the eigenimages of a given set of images}
+\title{Compute eigenimages of a given set of images}
 \usage{
 eigen_images(images, n_pc = 5, varimax_rotation = FALSE, total_var = TRUE)
 }
@@ -14,13 +14,17 @@ means that \code{dim(images) = (*,*,1,*)}, for color images
 
 \item{n_pc}{number of eigenimages}
 
-\item{varimax_rotation}{boolean: Shall varimax rotation be performed?}
+\item{varimax_rotation}{\code{TRUE}: Varimax rotation is carried out, 
+default is \code{FALSE}}
 
-\item{total_var}{Shall total variance be computed? Else 1.}
+\item{total_var}{\code{TRUE} (default): Total variance is computed.}
+}
+\value{
+List with eigenimages, singular values and total variance.
 }
 \description{
 Images can be either grayscale images or color images. 
 	The function computes the eigenimages (considering each pixel
-	as different variable, i.e. no penalization) and eigenvalues.
+	as different variable, i.e., no penalization) and eigenvalues.
 }
 

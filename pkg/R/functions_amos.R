@@ -8,8 +8,11 @@
 # download_amos_func()
 ###################################
 
-#' Function to download image data from AMOS
+#' Download image data from AMOS
 #' 
+#' This function can be used to automatically download data from AMOS
+#'  (\url{http://amos.cse.wustl.edu/})
+#'   
 #' @param camera Name(s) of the camera (is a number, see URL) as vector
 #' @param year Year(s) to be downloaded as vector
 #' @param month Month(s) to be downloaded as vector

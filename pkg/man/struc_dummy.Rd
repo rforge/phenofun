@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions_strucchange.R
 \name{struc_dummy}
 \alias{struc_dummy}
-\title{Function to apply optimality criterion 2 on \%greenness time series}
+\title{Apply optimality criterion 2 on \%greenness time series}
 \usage{
 struc_dummy(mean_doy_norm, a_vec, b_vec, doy = NULL)
 }
@@ -16,9 +16,10 @@ struc_dummy(mean_doy_norm, a_vec, b_vec, doy = NULL)
 \item{doy}{Optional vector of DOYs}
 }
 \value{
-max_corr Maximal correlations
+List with \code{max_corr}, the vector of OC2 values for each row of 
+ \code{mean_doy_norm} and \code{wm1}, the index of the best ROI
 }
 \description{
-Function to apply optimality criterion 2 on \%greenness time series
+Apply optimality criterion 2 on \%greenness time series
 }
 

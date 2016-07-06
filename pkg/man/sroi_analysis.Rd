@@ -59,12 +59,20 @@ of more than one year is analyzed, else \code{doy}}
 
 \item{which_images_background}{Index of background image}
 
-\item{x}{vector of x-coordinates of analyzed pixels}
+\item{x}{Vector of x-coordinates to read in. Default \code{NULL} results in 
+a grid of all possible values.}
 
-\item{y}{vector of y-coordinates of analyzed pixels}
+\item{y}{Vector of y-coordinates to read in. Default \code{NULL} results in 
+a grid of all possible values.}
+}
+\value{
+An entire sROI analysis is carried out in the automated
+ version of multiple random pinpricks. All results are saved on the disc, 
+ the necessary folders are created.
 }
 \description{
 This function allows to carry out an entire sROI analysis for given 
-webcam data
+webcam data. Example code can be downloaded at 
+\url{http://bothmann.userweb.mwn.de/dissertation.html}.
 }
 

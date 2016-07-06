@@ -4,11 +4,14 @@
 # Author: Ludwig Bothmann
 ###########################################################################
 
-#' Function to create the directories for the results
+#' Create directories for the results
+#'
+#' This function creates the specified directories
 #'
 #' @param path_base Base directory
 #' @param name_of_analysis Name of the analysis
-#' @return Nothing
+#' @return Directories \code{path_base/name_of_analysis/mask_timeseries} and
+#'  \code{path_base/name_of_analysis/masks} are created
 #' @export
 #'
 create_dirs_uroi <- function(path_base=NULL,
@@ -53,12 +56,18 @@ create_dirs_uroi <- function(path_base=NULL,
 
 }
 
-#' Function to find pixel clusters in a set of images
+#' Function clusters in a set of images
 #'
-#' @param x Vector of x-coordinates to read in.
-#' @param y Vector of y-coordinates to read in.
-#' @param folder The folder that contains the images to be read in.
-#' @param lists_files A vector containing the names of all images to be read in.
+#' Singular value decomposition and k-means clustering is used to find clusters
+#'  of pixels which have a similar behavior through the year.
+#'
+#' @param x Vector of x-coordinates to read in. Default \code{NULL} results in 
+#'  a grid of all possible values.
+#' @param y Vector of y-coordinates to read in. Default \code{NULL} results in 
+#'  a grid of all possible values.
+#' @param folder The folder which contains the images.
+#' @param lists_files A vector containing the names of all images inside 
+#'  \code{folder} to be read in.
 #' @param which_images An optional vector to select images from \code{lists_files}.
 #' 	Default is \code{seq_len(length(lists_files))}
 #' @param n_pc_vec Vector of number of singular vectors
@@ -66,8 +75,9 @@ create_dirs_uroi <- function(path_base=NULL,
 #' @param nstart Number of new starts of the k-means
 #' @param path_base Base directory for saving the results
 #' @param name_of_analysis Name of the analysis (for file name of the results)
-#' @param save_results Boolean, shall the results be saved on the disc? Default to \code{FALSE}.
-#' @param colormode The color mode, eiteher \code{Color} or \code{Grayscale}
+#' @param save_results \code{TRUE}: Results are saved on the disc, default is 
+#'  \code{FALSE}.
+#' @param colormode The color mode, either \code{Color} or \code{Grayscale}
 #' @return A list containing the clusters and settings
 #' @export
 #' @import irlba
@@ -189,21 +199,26 @@ find_clusters <- function(x=NULL,
 	return(output)
 }
 
-#' Function to generate binary masks from the results of a cluster analysis
+#' Generate binary masks from the results of a cluster analysis
+#' 
+#' This function transforms the results of a cluster analysis in a set of 
+#'  binary masks (or ROIs).
 #'
 #' @param settings A matrix containing the analysed settings.
-#' 	Preferably the output from \code{find_clusters}.
+#' 	Preferably the output from \code{\link{find_clusters}}.
 #' @param cluster_list A list with the results of the cluster analysis.
-#' 	Preferably the output from \code{find_clusters}.
-#' @param x Vector of x-coordinates to read in.
-#' @param y Vector of y-coordinates to read in.
+#' 	Preferably the output from \code{\link{find_clusters}}.
+#' @param x Vector of x-coordinates to read in. Default \code{NULL} results in 
+#'  a grid of all possible values.
+#' @param y Vector of y-coordinates to read in. Default \code{NULL} results in 
+#'  a grid of all possible values.
 #' @param name_of_analysis Name of the analysis (for file name of the results)
 #' @param path_base Base directory
-#' @param return_masks Boolean: Shall the masks be returned as list?
-#' @param save_masks Boolean: Shall the masks be saved as .RData and .tiff?
+#' @param return_masks \code{TRUE} (default): Masks are returned as list.
+#' @param save_masks \code{TRUE} (default): Masks are saved as .RData and .tiff.
 #' @param type Type of saved images: .tiff, .jpeg, .jpg, .png, ..., everything
-#' 	possible in writeImage, see ?writeImage
-#' @return Nothing.
+#' 	possible in \code{\link{EBImage::writeImage}}, see \code{?EBImage::writeImage}
+#' @return List of masks.
 #' @export
 generate_masks <- function(settings,
 									cluster_list,
@@ -277,13 +292,18 @@ generate_masks <- function(settings,
 	}
 }
 
-#' Function to mask images and compute \%greenness time series (per doy)
+#' Mask images and compute \%greenness time series
+#' 
+#' For given ROIs, the \%greenness time series inside the ROIs is computed on doy level
 #'
 #' @param color Color to compute the \%color time series. Default is \code{"green"}
-#' @param x Vector of x-coordinates to read in.
-#' @param y Vector of y-coordinates to read in.
-#' @param folder The folder that contains the images to be read in.
-#' @param lists_files A vector containing the names of all images to be read in.
+#' @param x Vector of x-coordinates to read in. Default \code{NULL} results in 
+#'  a grid of all possible values.
+#' @param y Vector of y-coordinates to read in. Default \code{NULL} results in 
+#'  a grid of all possible values.
+#' @param folder The folder which contains the images.
+#' @param lists_files A vector containing the names of all images inside 
+#'  \code{folder} to be read in.
 #' @param which_images An optional vector to select images from \code{lists_files}.
 #' 	Default is \code{seq_len(length(lists_files))}
 #' @param doy Vector of DOYs for each image
@@ -291,9 +311,9 @@ generate_masks <- function(settings,
 #' @param name_of_analysis Name of the analysis (for file name of the results)
 #' @param main_plot Main for the plot
 #' @param settings_mat Matrix with all settings from find_clusters
-#' @param load_masks Boolean: Shall the masks be loaded from the disc? Otherwise, results from generate
-#' 	masks can be given as masks_list
-#' @param masks_list A list containing the masks, possibly output from \code{generate_masks()}
+#' @param load_masks Boolean: Shall the masks be loaded from the disc? Otherwise, 
+#'  results from \code{\link{generate_masks}} can be given as \code{masks_list}
+#' @param masks_list A list containing the masks, possibly output from \code{\link{generate_masks}}
 #' @return A list containing the mean doy time series and settings
 #' @export
 compute_greenness_time_series  <- function(color="green",
@@ -466,12 +486,12 @@ compute_greenness_time_series  <- function(color="green",
 	return(output)
 }
 
-#' Overlay list of mask images on reference image with transperency alpha
+#' Overlay list of mask images on reference image with transparency alpha
 #'
-#' @param masks_list List of masks, preferably output from \code{generate_masks()}
+#' @param masks_list List of masks, preferably output from \code{\link{generate_masks}}
 #' @param ref_image Reference image for the overlay
 #' @param alpha Transparency factor
-#' @return An \code{Image} object containing all overlay
+#' @return An \code{Image} object containing all overlays.
 #' @author Michael Matiu
 #' @import abind
 #' @export

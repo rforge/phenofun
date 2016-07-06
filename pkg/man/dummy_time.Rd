@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions_strucchange.R
 \name{dummy_time}
 \alias{dummy_time}
-\title{Help function for computation of dummy time series}
+\title{Define dummy time series}
 \usage{
 dummy_time(x, a, b, doy = NULL)
 }
@@ -15,7 +15,10 @@ dummy_time(x, a, b, doy = NULL)
 
 \item{doy}{Vector of doys}
 }
+\value{
+The dummy time series.
+}
 \description{
-Help function for computation of dummy time series
+Define dummy time series for the computation of optimality criterion 2.
 }
 

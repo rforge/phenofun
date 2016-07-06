@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions_amos.R
 \name{download_amos_func}
 \alias{download_amos_func}
-\title{Function to download image data from AMOS}
+\title{Download image data from AMOS}
 \usage{
 download_amos_func(camera, year, month)
 }
@@ -14,6 +14,7 @@ download_amos_func(camera, year, month)
 \item{month}{Month(s) to be downloaded as vector}
 }
 \description{
-Function to download image data from AMOS
+This function can be used to automatically download data from AMOS
+ (\url{http://amos.cse.wustl.edu/})
 }
 
