@@ -318,7 +318,7 @@ read_images_pseudo_ndvi <- function(folder,
 				 file_names[which_images[i]], "\n")
 		}
 		
-		# Grün-Bild
+		# Gruen-Bild
 		images_green[,,,i] <- imageData(Image(readImage(
 			paste0(folder,file_names[which_images[i]]))[x,y,2],
 			colormode="Grayscale"))

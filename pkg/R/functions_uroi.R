@@ -217,7 +217,7 @@ find_clusters <- function(x=NULL,
 #' @param return_masks \code{TRUE} (default): Masks are returned as list.
 #' @param save_masks \code{TRUE} (default): Masks are saved as .RData and .tiff.
 #' @param type Type of saved images: .tiff, .jpeg, .jpg, .png, ..., everything
-#' 	possible in \code{\link{EBImage::writeImage}}, see \code{?EBImage::writeImage}
+#' 	possible in \code{EBImage::writeImage}, see \code{?EBImage::writeImage}
 #' @return List of masks.
 #' @export
 generate_masks <- function(settings,
@@ -315,6 +315,9 @@ generate_masks <- function(settings,
 #'  results from \code{\link{generate_masks}} can be given as \code{masks_list}
 #' @param masks_list A list containing the masks, possibly output from \code{\link{generate_masks}}
 #' @return A list containing the mean doy time series and settings
+#' @import grDevices
+#' @import graphics
+#' @import stats
 #' @export
 compute_greenness_time_series  <- function(color="green",
 														 x=NULL,

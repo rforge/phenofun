@@ -5,7 +5,7 @@
 ###########################################################################
 
 ############################################################
-# Funktion um Farbzeitreihe und LOESS-Schätzer zu plotten
+# Funktion um Farbzeitreihe und LOESS-Schaetzer zu plotten
 ############################################################
 
 plot_fun <- function(mean_doy, 

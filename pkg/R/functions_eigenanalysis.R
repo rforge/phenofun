@@ -255,6 +255,7 @@ scores_images <- function(images,
 #' 	default is \code{"rgb"}
 #' @param scores scores matrix, only necessary if \code{fact==NULL} 
 #' 	to compute minimal and maximal scores
+#' @import utils
 display_eigen <- function(eigenimages,
                           colormode = "Color",
                           n_pc,
@@ -325,9 +326,9 @@ display_eigen <- function(eigenimages,
   # Restore third colour channel in eigenimages (blue channel)
   if(sum1){
     
-    # Schön ist das nicht!
+    # Schoen ist das nicht!
     # Wahrscheinlich stimmt es noch nicht mal
-    #	=> Erstmal theoretisch überlegen!
+    #	=> Erstmal theoretisch ueberlegen!
     
     dim_eigen <- dim_images
     dim_eigen[3] <- 3
@@ -584,9 +585,9 @@ display_eigen <- function(eigenimages,
 # 	# Restore third colour channel in eigenimages (blue channel)
 # 	if(sum1){
 # 		
-# 		# Schön ist das nicht!
+# 		# Schoen ist das nicht!
 # 		# Wahrscheinlich stimmt es noch nicht mal
-# 		#	=> Erstmal theoretisch überlegen!
+# 		#	=> Erstmal theoretisch ueberlegen!
 # 		
 # 		dim_eigen <- dim_images
 # 		dim_eigen[3] <- 3

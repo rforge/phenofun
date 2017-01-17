@@ -29,7 +29,7 @@ a grid of all possible values.}
 \item{save_masks}{\code{TRUE} (default): Masks are saved as .RData and .tiff.}
 
 \item{type}{Type of saved images: .tiff, .jpeg, .jpg, .png, ..., everything
-possible in \code{\link{EBImage::writeImage}}, see \code{?EBImage::writeImage}}
+possible in \code{EBImage::writeImage}, see \code{?EBImage::writeImage}}
 }
 \value{
 List of masks.
