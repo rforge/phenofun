@@ -18,6 +18,7 @@
 #'  versions.
 #' @export
 #' @import strucchange
+#' @import graphics
 struc_ftest <- function(mean_doy_norm, 
 								cut240=TRUE,
 								x_vec=NULL,

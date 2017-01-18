@@ -61,6 +61,7 @@
 #'  All results are saved on the disc, the necessary folders are created.
 #' @export
 #' @import MASS
+#' @import graphics
 sup_class <- function(folder_results=paste0(getwd(),"/"),
                       folder_data=paste0(getwd(),"/"),
                       name_of_analysis=substr(as.character(Sys.time()),1,10),

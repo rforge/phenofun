@@ -42,6 +42,7 @@
 #' @return An entire sROI analysis is carried out in the automated
 #'  version of multiple random pinpricks. All results are saved on the disc, 
 #'  the necessary folders are created.
+#' @import graphics
 #' @export
 sroi_analysis <- function(folder_results=paste0(getwd(),"/"),
                           folder_data=paste0(getwd(),"/"),

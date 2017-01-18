@@ -8,6 +8,7 @@
 # Funktion um Farbzeitreihe und LOESS-Schaetzer zu plotten
 ############################################################
 
+#' @import graphics
 plot_fun <- function(mean_doy, 
 							x=1:365,
 							main=NULL,

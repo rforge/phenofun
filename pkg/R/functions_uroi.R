@@ -458,9 +458,13 @@ compute_greenness_time_series  <- function(color="green",
 			  ylim=ylim,
 			  axes=FALSE,
 			  col=rgb(0,0,0,.5))
+
+		#########################
+		# wieder auskommentieren?
 		axis(side = 1, at = unique(doy[which_images]),
 			  labels = tapply(doy[which_images],INDEX = doy[which_images], FUN = mean))
 		axis(side = 2)
+		#########################
 		lines(lowess(unique(doy[which_images]),mean_doy,f = .03),
 				col="blue", lwd=2, lty=2)
 

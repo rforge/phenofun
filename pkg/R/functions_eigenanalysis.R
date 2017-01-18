@@ -760,6 +760,7 @@ display_eigen <- function(eigenimages,
 #' 	default is \code{FALSE}
 #' @param plot_lowess If \code{TRUE} (default), LOWESS estimators are plotted
 #' @param ... Further arguments
+#' @import graphics
 display_scores <- function(scores,
                            year,
                            doy,
