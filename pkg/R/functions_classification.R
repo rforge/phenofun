@@ -13,7 +13,6 @@
 #' 
 #' @param doys vector of given doys
 #' @param seasons_pred vector with predicted seasons
-#' @import irlba
 #' @return List with revised time series of seasons and extracted unique season
 #'  onset dates.
 #' @export
@@ -81,16 +80,6 @@ revise_seasons <- function(doys,
       }
     }
   }
-  
-  # 	season_current
-  # 	spring_onset_group
-  # 	spring_onset_doy
-  # 	summer_onset_group
-  # 	summer_onset_doy
-  # 	autumn_onset_group
-  # 	autumn_onset_doy
-  # 	winter_onset_group
-  # 	winter_onset_doy
   
   onset_doys <- c(spring_onset_doy,
                   summer_onset_doy,
