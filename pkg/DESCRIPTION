@@ -1,6 +1,6 @@
 Package: phenofun
 Title: Automated Processing of Webcam Images for Phenological Classification
-Version: 0.1.10
+Version: 0.1.11
 Authors@R: c(person("Ludwig", "Bothmann", role=c("aut","cre"),email="ludwig.bothmann@stat.uni-muenchen.de"),person("Michael","Matiu", role="ctb"))
 Description: Automated processing of webcam images for phenological classification. uROI method, sROI method and supervised classification method are fully implemented. For example code see http://bothmann.userweb.mwn.de/dissertation.html.
 Depends: R (>= 3.2.1), graphics
