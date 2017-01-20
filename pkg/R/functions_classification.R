@@ -13,7 +13,6 @@
 #' 
 #' @param doys vector of given doys
 #' @param seasons_pred vector with predicted seasons
-#' @import EBImage
 #' @import irlba
 #' @return List with revised time series of seasons and extracted unique season
 #'  onset dates.

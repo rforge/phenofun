@@ -219,6 +219,9 @@ find_clusters <- function(x=NULL,
 #' @param type Type of saved images: .tiff, .jpeg, .jpg, .png, ..., everything
 #' 	possible in \code{EBImage::writeImage}, see \code{?EBImage::writeImage}
 #' @return List of masks.
+#' @importFrom EBImage writeImage
+#' @importFrom EBImage Image
+#' @importFrom EBImage imageData
 #' @export
 generate_masks <- function(settings,
 									cluster_list,
@@ -501,6 +504,9 @@ compute_greenness_time_series  <- function(color="green",
 #' @return An \code{Image} object containing all overlays.
 #' @author Michael Matiu
 #' @import abind
+#' @importFrom EBImage Image
+#' @importFrom EBImage imageData
+#' @importFrom EBImage colorMode
 #' @export
 overlay_masks_onref <- function(masks_list, ref_image, alpha = 0.1){
 	image_masks <- lapply(masks_list, function(mask){

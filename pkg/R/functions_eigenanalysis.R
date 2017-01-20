@@ -19,7 +19,6 @@
 #' @param varimax_rotation \code{TRUE}: Varimax rotation is carried out, 
 #'  default is \code{FALSE}
 #' @param total_var \code{TRUE} (default): Total variance is computed.
-#' @import EBImage
 #' @import irlba
 #' @return List with eigenimages, singular values and total variance.
 eigen_images <- function(images,
@@ -256,6 +255,9 @@ scores_images <- function(images,
 #' @param scores scores matrix, only necessary if \code{fact==NULL} 
 #' 	to compute minimal and maximal scores
 #' @import utils
+#' @importFrom EBImage combine
+#' @importFrom EBImage rgbImage
+#' @importFrom EBImage display
 display_eigen <- function(eigenimages,
                           colormode = "Color",
                           n_pc,
@@ -1024,7 +1026,10 @@ display_scores <- function(scores,
 #' @param col_in input color channel if \code{relative==TRUE}: red=1, green=2, blue=3. Default ist 2.	
 #' @return \code{Image} object with restored images
 #' @import irlba
-#' @import EBImage
+#' @importFrom EBImage normalize
+#' @importFrom EBImage Image
+#' @importFrom EBImage imageData 
+#' @importFrom EBImage display
 #' @export
 restore_images <- function(eigenimages,
 									scores,

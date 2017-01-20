@@ -43,6 +43,7 @@
 #'  version of multiple random pinpricks. All results are saved on the disc, 
 #'  the necessary folders are created.
 #' @import graphics
+#' @importFrom EBImage rgbImage
 #' @export
 sroi_analysis <- function(folder_results=paste0(getwd(),"/"),
                           folder_data=paste0(getwd(),"/"),

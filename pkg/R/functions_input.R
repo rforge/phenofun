@@ -34,7 +34,9 @@
 #' 	other two channels, default is \code{FALSE}. 
 #' @return An array containing the images. If \code{sum1=TRUE}, then the 
 #' 	third colour channel is dropped to save memory.
-#' @import EBImage
+#' @importFrom EBImage readImage
+#' @importFrom EBImage Image
+#' @importFrom EBImage imageData
 #' @export
 read_images <- function(colormode="Color", 
 								dim_images=NULL, 
@@ -242,7 +244,9 @@ read_images <- function(colormode="Color",
 #' @param x_red which x-values shall be read in for the red-channel?
 #' @param y_red which y-values shall be read in for the red-channel?
 #' @return An array containing the images.
-#' @import EBImage
+#' @importFrom EBImage readImage
+#' @importFrom EBImage imageData
+#' @importFrom EBImage Image
 read_images_ndvi <- function(folder,
 									  file_names, 
 									  which_images,
@@ -296,7 +300,9 @@ read_images_ndvi <- function(folder,
 #' @param x which x-values shall be read in?
 #' @param y which y-values shall be read in?
 #' @return An array containing the images.
-#' @import EBImage
+#' @importFrom EBImage readImage
+#' @importFrom EBImage imageData
+#' @importFrom EBImage Image
 read_images_pseudo_ndvi <- function(folder,
 												file_names, 
 												which_images,
@@ -583,7 +589,6 @@ sum1_img <- function(images){
 #' 	\code{dim(images) = (*,*,3,*)}
 #' @param center \code{TRUE} (default): Images are centered
 #' @param scale \code{TRUE} (default): Images are standardized to variance 1
-#' @import EBImage
 #' @import irlba
 #' @return The scaled images as array
 #' @export
