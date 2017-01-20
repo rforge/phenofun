@@ -2,9 +2,7 @@
 
 export(amos_uroi_wrap)
 export(download_amos_func)
-export(revise_seasons)
 export(struc_dummy)
 export(struc_ftest)
 import(graphics)
-import(irlba)
 import(strucchange)
