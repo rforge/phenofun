@@ -80,7 +80,7 @@ create_dirs_uroi <- function(path_base=NULL,
 #' @param colormode The color mode, either \code{Color} or \code{Grayscale}
 #' @return A list containing the clusters and settings
 #' @export
-#' @import irlba
+#' @importFrom irlba irlba
 find_clusters <- function(x=NULL,
 								  y=NULL,
 								  folder,
