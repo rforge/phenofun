@@ -589,7 +589,6 @@ sum1_img <- function(images){
 #' 	\code{dim(images) = (*,*,3,*)}
 #' @param center \code{TRUE} (default): Images are centered
 #' @param scale \code{TRUE} (default): Images are standardized to variance 1
-#' @import irlba
 #' @return The scaled images as array
 #' @export
 scale_img <- function(images,
