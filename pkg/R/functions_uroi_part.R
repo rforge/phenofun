@@ -7,7 +7,6 @@
 #' pseudo irlba
 #'
 #' @param x a number
-#' @importFrom irlba irlba
 #' @export
 pseudo_irlba <- function(x){
   x+1
