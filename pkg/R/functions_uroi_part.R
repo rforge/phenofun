@@ -4,6 +4,15 @@
 # Author: Ludwig Bothmann
 ###########################################################################
 
+#' pseudo irlba
+#'
+#' @param x a number
+#' @importFrom irlba irlba
+#' @export
+pseudo_irlba <- function(x){
+  x+1
+}
+
 #' Create directories for the results
 #'
 #' This function creates the specified directories
